@@ -18,7 +18,9 @@
     "sweetalert": "^2.1.2",
     "uniforms": "^3.8.1",
     "uniforms-bridge-simple-schema-2": "^3.8.1",
-    "uniforms-semantic": "^3.8.1"
+    "uniforms-semantic": "^3.8.1",
+    "postcss": "^8.4.7",
+    "cssnano": "^5.1.0"
   },
   "devDependencies": {
     "babel-eslint": "^10.1.0",
