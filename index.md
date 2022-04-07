@@ -3,11 +3,11 @@ as the project is still in development.
 
 ## Table of Contents
 
-* [Overview](https://mox-amber.github.io/sessh/#overview)
-* [Deployment](https://mox-amber.github.io/sessh/#deployment)
-* [User Guide](https://mox-amber.github.io/sessh/#user-guide)
-* [Developer Guide](https://mox-amber.github.io/sessh/#developer-guide)
-* [Development](https://mox-amber.github.io/sessh/#development)
+  * [Overview](https://mox-amber.github.io/sessh/#overview)
+  * [Deployment](https://mox-amber.github.io/sessh/#deployment)
+  * [User Guide](https://mox-amber.github.io/sessh/#user-guide)
+  * [Developer Guide](https://mox-amber.github.io/sessh/#developer-guide)
+  * [Development](https://mox-amber.github.io/sessh/#development)
 
 
 ## Overview
@@ -16,12 +16,12 @@ within the UH system by providing them with the tools they need to start
 muscician-to-musician connections. By using simple and effective design 
 principals we aim to have an application with the following features:
 
-* Creation of profiles including descriptions such as musical interests, goals, skills, etc.
-* Profiles will contain access to musical works they produced with links to other work they
-  were involved in.
-* Search features that allow filtering based on preferences.
-* Adding people to your regular sessions list.
-* Notifications based on search terms.
+  * Creation of profiles including descriptions such as musical interests, goals, skills, etc.
+  * Profiles will contain access to musical works they produced with links to other work they
+    were involved in.
+  * Search features that allow filtering based on preferences.
+  * Adding people to your regular sessions list.
+  * Notifications based on search terms.
 
 
 ## Deployment
