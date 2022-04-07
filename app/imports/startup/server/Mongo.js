@@ -1,5 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 import { Stuffs } from '../../api/stuff/Stuff.js';
+import { Musicians } from '../../api/musician/Musician';
 
 /* eslint-disable no-console */
 
@@ -9,10 +10,23 @@ function addData(data) {
   Stuffs.collection.insert(data);
 }
 
+function addMusicians(data){
+  console.log(` Adding: ${data.name} (${data.owner})`);
+  Musicians.collection.insert(data);
+}
+
 // Initialize the StuffsCollection if empty.
 if (Stuffs.collection.find().count() === 0) {
-  if (Meteor.settings.defaultData) {
+  if (Meteor.settings.defaultMusicians) {
     console.log('Creating default data.');
     Meteor.settings.defaultData.map(data => addData(data));
+  }
+}
+
+// Initialize the StuffsCollection if empty.
+if (Musicians.collection.find().count() === 0) {
+  if (Meteor.settings.defaultData) {
+    console.log('Creating default musicians.');
+    Meteor.settings.defaultMusicians.map(data => addMusicians(data));
   }
 }
