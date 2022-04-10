@@ -11,7 +11,9 @@
   background-color: var(--ash-gray);
 }
 
-#sessh-body > * {
+#sessh-body > *,
+.ui.center.aligned.header
+{
   color: var(--english-violet);
 }
 
