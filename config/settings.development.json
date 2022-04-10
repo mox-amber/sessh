@@ -13,5 +13,11 @@
 
   "defaultMusicians": [
     { "name": "Kaiwi Akioka", "age":  19, "owner":  "admin@foo.com"}
+  ],
+
+  "defaultGenres": [
+    { "name": "Pop" },
+    { "name": "Rock and Roll" },
+    { "name": "Hawaiian" }
   ]
 }

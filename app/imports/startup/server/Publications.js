@@ -2,6 +2,7 @@ import { Meteor } from 'meteor/meteor';
 import { Roles } from 'meteor/alanning:roles';
 import { Stuffs } from '../../api/stuff/Stuff';
 import { Musicians } from '../../api/musician/Musician';
+import { Genres } from '../../api/genre/Genre';
 
 // User-level publication.
 // If logged in, then publish documents owned by this user. Otherwise publish nothing.
@@ -17,6 +18,14 @@ Meteor.publish(Musicians.userPublicationName, function () {
   if (this.userId) {
     const username = Meteor.users.findOne(this.userId).username;
     return Musicians.collection.find({ owner: username });
+  }
+  return this.ready();
+});
+
+Meteor.publish(Genres.userPublicationName, function () {
+  if (this.userId) {
+    const username = Meteor.users.findOne(this.userId).username;
+    return Genres.collection.find({ owner: username });
   }
   return this.ready();
 });
