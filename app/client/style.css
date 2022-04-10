@@ -1,0 +1,62 @@
+:root {
+  --ash-gray: #bfc3ba;
+  --silver-chalice: #a9aca9;
+  --lilac: #a49db7;
+  --eggplant: #60495a;
+  --english-violet: #3f3244;
+  --dark-purple: #2f2235;
+}
+
+#sessh-body
+{
+  background-color: var(--ash-gray);
+}
+
+#sessh-body > *
+{
+  color: var(--english-violet);
+}
+
+#sesshHeader {
+  color: var(--lilac);
+  font-weight: bold;
+}
+
+#navBar,
+#navBar > *,
+#navBar > div > * > div.menu.transition.visible,
+#navBar > div > * > div.menu.transition.visible > * > *,
+#navBar > div > * > .menu:after
+{
+  background-color: var(--dark-purple);
+  color: var(--lilac);
+}
+
+#navBar > a.item.active {
+  color: var(--lilac) !important;
+  font-weight: bold;
+  border-bottom-style: solid;
+  border-bottom-width: 3px;
+  border-bottom-color: #a49db7;
+}
+
+#navBar > *:hover,
+.ui.menu .ui.dropdown .menu > .item:hover
+{
+  background-color: var(--english-violet);
+}
+
+#footer
+{
+  color: var(--english-violet);
+}
+
+#footer > * > a
+{
+  color: var(--dark-purple);
+}
+
+#footer > * > a:hover
+{
+  color: var(--lilac);
+}
