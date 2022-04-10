@@ -7,13 +7,11 @@
   --dark-purple: #2f2235;
 }
 
-#sessh-body
-{
+#sessh-body {
   background-color: var(--ash-gray);
 }
 
-#sessh-body > *
-{
+#sessh-body > * {
   color: var(--english-violet);
 }
 
@@ -46,17 +44,14 @@
   background-color: var(--english-violet);
 }
 
-#footer
-{
+#footer {
   color: var(--english-violet);
 }
 
-#footer > * > a
-{
+#footer > * > a {
   color: var(--dark-purple);
 }
 
-#footer > * > a:hover
-{
+#footer > * > a:hover {
   color: var(--lilac);
 }
