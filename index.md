@@ -72,10 +72,8 @@ The find page lets users discover and filter musicians based on their preference
 [TODO]
 
 ## Development
-To bring our application to life we used issue driven management practices through 
-our github repository. Within the repository separate projects were created based
-on milestones we expected to reach. Our milestones were then divided into issues 
-divided amongst each member.
+To bring our application to life we used issue driven management practices
+through the sessh [github repository](https://github.com/mox-amber/sessh). Within the repository separate projects were created based on milestones we expected to reach. Our milestones were then divided into issues divided amongst each member.
 
 ### Milestone 1
 For milestone 1, our goal was to create and deploy a basic working version of our application.
@@ -92,3 +90,6 @@ if you would like to see how we divided our tasks.
 * Josh Constantino
 * Waylon Ho
 * Ian Iwata
+
+For further information about Mox Amber and our projects you can visit our [github](https://github.com/mox-amber).
+
