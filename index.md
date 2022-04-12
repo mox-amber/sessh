@@ -11,21 +11,28 @@ as the project is still in development.
 
 
 ## Overview
-Sessh is a web application that hopes to cultivate a network of musicians
-within the UH system by providing them with the tools they need to start
-muscician-to-musician connections. By using simple and effective design 
-principals we aim to have an application with the following features:
+### What Is Sessh?
+Let's say you need a drummer for your band, looking for someone to teach you how to learn
+certain chord pattern, or just want some people to jam with. Finding other
+individuals who wish to pursue musical related goals can be difficult, especially
+when there is no reliable resource to do so. That's were Sessh comes in, we hope
+to develop a web application dedicated to cultivating a network of students who are musically inclined and enrolled at a University of Hawaii affiliated school.
 
-  * Creation of profiles including descriptions such as musical interests, goals, skills, etc.
-  * Profiles will contain access to musical works they produced with links to other work they
-    were involved in.
-  * Search features that allow filtering based on preferences.
-  * Adding people to your regular sessions list.
-  * Notifications based on search terms.
+### How Will it Work?
+We are aiming to provide the fundamental tools necessary to bring students together
+so that they can arrange organized meet ups for anyone interested. We will first start with a CRUD(create, read, update, and delete) based design for our initial tools including:
+* Creation of profiles including descriptions such as musical interests, goals, skills, etc.
+* Profiles will contain access to musical works they produced with links to other work they
+  were involved in.
+* Full browsing with dedicated filtering capabilities where a user can search for others based on information listed on their profiles.
+* Adding people to your regular sessions list.
+* Notifications based on search terms.
 
+Along with the feature suite, there will be a dedicated group of 'super-users' with admin
+capabilities that ensure the website adheres to our applications policy.
 
 ## Deployment
-If you would like to see our application in action you can visit [our live site]().
+If you would like to see our application in action you can visit [our live site](http://161.35.230.24/#/).
 
 ## User Guide
 The following is a walkthrough of the application.
@@ -71,7 +78,7 @@ on milestones we expected to reach. Our milestones were then divided into issues
 divided amongst each member.
 
 ### Milestone 1
-For milestone 1, our goal was to create and deploy a working version of our application.
+For milestone 1, our goal was to create and deploy a basic working version of our application.
 
 You can view our [project board](https://github.com/mox-amber/sessh/projects/1)
 if you would like to see how we divided our tasks.
@@ -79,4 +86,9 @@ if you would like to see how we divided our tasks.
 ### Milestone 2
 [TODO]
 
-
+## The Team
+* Kaiwi Akioka
+* Edward Birtodaso
+* Josh Constantino
+* Waylon Ho
+* Ian Iwata
