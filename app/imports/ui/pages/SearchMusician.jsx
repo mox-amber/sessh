@@ -73,7 +73,12 @@ class FindMusician extends React.Component {
 
   handleChange = (e, { value }) => this.setState({ value });
 
-  filterd = this.contacts.filter((e) => e.genres);
+  do(state) {
+    if (state === 'ANY') { return; }
+    this.contacts.filter((e) => e.name === 'Joe Johnson');
+  }
+
+  filtered = this.do(this.state);
 
   // If the subscription(s) have been received, render the page, otherwise show a loading icon.
   render() {
@@ -96,6 +101,7 @@ class FindMusician extends React.Component {
             <Dropdown
               text='Genres'
               onChange={this.handleChange}
+              onClick={this.handleClick}
               options={this.genreOptions}
               value={value}
             />
