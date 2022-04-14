@@ -1,18 +1,15 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
-import { Container, Card, Header, Loader, Grid, Menu, Dropdown, Button, Select } from 'semantic-ui-react';
+import { Container, Card, Header, Loader, Menu, Dropdown } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
-import { NavLink } from 'react-router-dom';
-import { Musicians } from '../../api/musician/Musician';
-import MusicianItem from '../components/MusicianItem';
 import Contact from '../components/Contact';
-import { Stuffs } from '../../api/stuff/Stuff';
 import { Genres } from '../../api/genre/Genre';
 
 /** Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
 class FindMusician extends React.Component {
 
+  // Test data for functionality
   contacts = [
     {
       name: 'John Doe',
@@ -59,26 +56,44 @@ class FindMusician extends React.Component {
   ];
 
   genreOptions = [
-    { key: 'any', text: 'Any', value: 'any' },
-    { key: 'pop', text: 'Pop', value: 'pop' },
-    { key: 'rock-and-roll', text: 'Rock and Roll', value: 'rock-and-roll' },
-    { key: 'hawaiian', text: 'Hawaiian', value: 'hawaiian' },
-    { key: 'jazz', text: 'Jazz', value: 'jazz' },
-    { key: 'hiphop', text: 'Hip Hop', value: 'hiphop' },
-    { key: 'gangster-rap', text: 'Gangster Rap', value: 'gangster-rap' },
-    { key: 'classical', text: 'Classical', value: 'classical' },
+    { key: 'any', text: 'Any', value: 'Any' },
+    { key: 'pop', text: 'Pop', value: 'Pop' },
+    { key: 'rock-and-roll', text: 'Rock and Roll', value: 'Rock and Roll' },
+    { key: 'hawaiian', text: 'Hawaiian', value: 'Hawaiian' },
+    { key: 'jazz', text: 'Jazz', value: 'Jazz' },
+    { key: 'hiphop', text: 'Hip Hop', value: 'Hip Hop' },
+    { key: 'gangster-rap', text: 'Gangster Rap', value: 'Gangster Rap' },
+    { key: 'classical', text: 'Classical', value: 'Classical' },
   ];
 
-  state={};
+  instrumentOptions = [
+    { key: 'any', text: 'Any', value: 'Any' },
+    { key: 'Guitar', text: 'Guitar', value: 'Guitar' },
+    { key: 'Banjo', text: 'Banjo', value: 'Banjo' },
+    { key: 'Viola', text: 'Viola', value: 'Viola' },
+    { key: 'Ukulele', text: 'Ukulele', value: 'Ukulele' },
+    { key: 'Mbira', text: 'Mbira', value: 'Mbira' },
+    { key: 'Clarinet', text: 'Clarinet', value: 'Clarinet' },
+    { key: 'Cowbell', text: 'Cowbell', value: 'Cowbell' },
+  ];
 
-  handleChange = (e, { value }) => this.setState({ value });
+  state={ genreValue: 'Any', instrumentValue: 'Any' };
 
-  do(state) {
-    if (state === 'ANY') { return; }
-    this.contacts.filter((e) => e.name === 'Joe Johnson');
+  // Changes state when user selects a genre from the dropdown
+  handleGenreChange = (e, genre) => this.setState({ genreValue: genre.value });
+
+  // Changes state when user selects an instrument from the dropdown
+  handleInstrumentChange = (e, instrument) => this.setState({ instrumentValue: instrument.value });
+
+  // Filters musicians based on preferences
+  displayMusicians(genre, instrument) {
+    let news = (genre === 'Any' || genre === {}) ? this.contacts : this.contacts.filter((x) => x.genres.some((y) => y.name === genre));
+    news = (instrument === 'Any' || instrument === {}) ? news : news.filter((x) => x.instruments.some((y) => y.name === instrument));
+
+    return (
+      news.map((contact, index) => <Contact key={index} contact={contact} />)
+    );
   }
-
-  filtered = this.do(this.state);
 
   // If the subscription(s) have been received, render the page, otherwise show a loading icon.
   render() {
@@ -87,29 +102,40 @@ class FindMusician extends React.Component {
 
   // Render the page once subscriptions have been received.
   renderPage() {
-    const { value } = this.state;
+    const genre = this.state.genreValue;
+    const instrument = this.state.instrumentValue;
     return (
-      <Container>
-        <Menu borderless>
+      <Container id='searchPage'>
+        <Menu borderless id='navBar'>
           <Menu.Item>
-            <Header as="h2" textAlign="left">Find Musicians</Header>
+            <Header as="h2" textAlign="left" id='sesshHeader'>Find Musicians</Header>
           </Menu.Item>
           <Menu.Item position="right">
             Filters:
           </Menu.Item>
           <Menu.Item>
             <Dropdown
+              pointing="top right"
               text='Genres'
-              onChange={this.handleChange}
-              onClick={this.handleClick}
+              onChange={this.handleGenreChange}
               options={this.genreOptions}
-              value={value}
+              value={genre}
+            />
+          </Menu.Item>
+          <Menu.Item>
+            <Dropdown
+              pointing="top right"
+              text='Instruments'
+              onChange={this.handleInstrumentChange}
+              options={this.instrumentOptions}
+              value={instrument}
             />
           </Menu.Item>
         </Menu>
-        <pre>Current value: {value}</pre>
-        <Card.Group>
-          {this.filterd.map((contact, index) => <Contact key={index} contact={contact} />)}
+        {/* Debug */}
+        {/* <pre>Current value: {genre} {instrument}</pre> */}
+        <Card.Group centered>
+          {this.displayMusicians(genre, instrument)}
         </Card.Group>
       </Container>
     );
