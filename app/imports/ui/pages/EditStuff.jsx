@@ -1,3 +1,4 @@
+/*
 import React from 'react';
 import { Grid, Loader, Header, Segment } from 'semantic-ui-react';
 import swal from 'sweetalert';
@@ -10,15 +11,15 @@ import { Stuffs } from '../../api/stuff/Stuff';
 
 const bridge = new SimpleSchema2Bridge(Stuffs.schema);
 
-/** Renders the Page for editing a single document. */
+/!** Renders the Page for editing a single document. *!/
 class EditStuff extends React.Component {
 
   // On successful submit, insert the data.
   submit(data) {
     const { name, quantity, condition, _id } = data;
     Stuffs.collection.update(_id, { $set: { name, quantity, condition } }, (error) => (error ?
-      swal('Error', error.message, 'error') :
-      swal('Success', 'Item updated successfully', 'success')));
+        swal('Error', error.message, 'error') :
+        swal('Success', 'Item updated successfully', 'success')));
   }
 
   // If the subscription(s) have been received, render the page, otherwise show a loading icon.
@@ -29,21 +30,21 @@ class EditStuff extends React.Component {
   // Render the form. Use Uniforms: https://github.com/vazco/uniforms
   renderPage() {
     return (
-      <Grid container centered>
-        <Grid.Column>
-          <Header as="h2" textAlign="center">Edit Stuff</Header>
-          <AutoForm schema={bridge} onSubmit={data => this.submit(data)} model={this.props.doc}>
-            <Segment>
-              <TextField name='name'/>
-              <NumField name='quantity' decimal={false}/>
-              <SelectField name='condition'/>
-              <SubmitField value='Submit'/>
-              <ErrorsField/>
-              <HiddenField name='owner' />
-            </Segment>
-          </AutoForm>
-        </Grid.Column>
-      </Grid>
+        <Grid container centered>
+          <Grid.Column>
+            <Header as="h2" textAlign="center">Edit Stuff</Header>
+            <AutoForm schema={bridge} onSubmit={data => this.submit(data)} model={this.props.doc}>
+              <Segment>
+                <TextField name='name'/>
+                <NumField name='quantity' decimal={false}/>
+                <SelectField name='condition'/>
+                <SubmitField value='Submit'/>
+                <ErrorsField/>
+                <HiddenField name='owner' />
+              </Segment>
+            </AutoForm>
+          </Grid.Column>
+        </Grid>
     );
   }
 }
@@ -70,3 +71,4 @@ export default withTracker(({ match }) => {
     ready,
   };
 })(EditStuff);
+*/
