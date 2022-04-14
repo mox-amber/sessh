@@ -68,3 +68,25 @@
 #searchPageMenu > * {
   color: #a49db7;
 }
+
+.sessh-landing-bg {
+  background: url('images/sessh_image.jpg') no-repeat center center fixed;
+  background-size: cover;
+}
+
+.landing-center {
+  margin-top: 100px;
+  margin-bottom: 100px;
+}
+
+.sessh-title {
+  margin-top: 45px;
+  font-size: 80px;
+  color: var(--english-violet);
+  font-weight: bold;
+  text-align: center;
+}
+
+.spacer {
+  margin-bottom: 20px;
+}
