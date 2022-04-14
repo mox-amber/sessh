@@ -16,9 +16,11 @@ class Contact extends React.Component {
           <Card.Header>{this.props.contact.name}</Card.Header>
           <Card.Description>
             <Header as='h5'>Instruments:</Header>
+            {/* eslint-disable-next-line react/jsx-key */}
             {this.props.contact.instruments.map((key) => <Button size='mini'>{key.name}</Button>)}
             <br/>
             <Header as='h5'>Genres:</Header>
+            {/* eslint-disable-next-line react/jsx-key */}
             {this.props.contact.genres.map((key) => <Button size='mini'>{key.name}</Button>)}
           </Card.Description>
         </Card.Content>
