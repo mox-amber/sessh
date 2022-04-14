@@ -20,10 +20,12 @@ function createUser(email, role) {
 
 /** Define an interest.  Has no effect if interest already exists. */
 function addInstrument(instrument) {
+  console.log(instrument);
   Instruments.collection.update({ name: instrument }, { $set: { name: instrument } }, { upsert: true });
 }
 
 function addGenre(genre) {
+  console.log(genre);
   Genres.collection.update({ name: genre }, { $set: { name: genre } }, { upsert: true });
 }
 
@@ -35,8 +37,8 @@ function addMusician({ name, age, owner, role, instruments, genres }) {
   // Create the profile.
   Musicians.collection.insert({ name, age, owner });
   // Add interests and projects.
-  instruments.map(instrument => MusiciansInstruments.collection.insert({ musician: owner, instrument }));
-  genres.map(genre => MusiciansGenres.collection.insert({ musician: owner, genre }));
+  instruments.map(instrument => MusiciansInstruments.collection.insert({ musician: name, instrument }));
+  genres.map(genre => MusiciansGenres.collection.insert({ musician: name, genre }));
   // Make sure interests are defined in the Interests collection if they weren't already.
   instruments.map(instrument => addInstrument(instrument));
   genres.map(genre => addGenre(genre));
@@ -49,7 +51,7 @@ if (Meteor.users.find().count() === 0) {
     Meteor.settings.defaultMusicians.map(musician => addMusician(musician));
     console.log('Creating the default projects');
     Meteor.settings.defaultInstruments.map(instrument => addInstrument(instrument));
-    Meteor.settings.defaultGenre.map(genre => addGenre(genre));
+    Meteor.settings.defaultGenres.map(genre => addGenre(genre));
   } else {
     console.log('Cannot initialize the database!  Please invoke meteor with a settings file.');
   }
