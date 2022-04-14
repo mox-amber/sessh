@@ -57,3 +57,14 @@
 #footer > * > a:hover {
   color: var(--lilac);
 }
+
+
+#searchPageMenu {
+  background-color: transparent;
+  box-shadow: none;
+  border: none;
+}
+
+#searchPageMenu > * {
+  color: #a49db7;
+}
