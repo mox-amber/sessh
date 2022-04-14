@@ -75,6 +75,8 @@ The find page lets users discover and filter musicians based on their preference
 To bring our application to life we used issue driven management practices
 through the sessh [github repository](https://github.com/mox-amber/sessh). Within the repository separate projects were created based on milestones we expected to reach. Our milestones were then divided into issues divided amongst each member.
 
+The Mox Amber team signed a contract that outlined the expectations of each member. You can view a copy of our team contract here: [Team Contract](https://docs.google.com/document/d/1PoUwM7omjHm2AsQrFtHgtw8QwC63vHkxEemNF_xnBQQ/edit).
+
 ### Milestone 1
 For milestone 1, our goal was to create and deploy a basic working version of our application.
 

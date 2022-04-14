@@ -4,6 +4,8 @@ import { Stuffs } from '../../api/stuff/Stuff';
 import { Musicians } from '../../api/musician/Musician';
 import { Genres } from '../../api/genre/Genre';
 import { Instruments } from '../../api/instruments/Instruments';
+import { MusiciansGenres } from '../../api/musician/MusicianGenre';
+import { MusiciansInstruments } from '../../api/musician/MusicianInstrument';
 
 // User-level publication.
 // If logged in, then publish documents owned by this user. Otherwise publish nothing.
@@ -35,6 +37,22 @@ Meteor.publish(Instruments.userPublicationName, function () {
   if (this.userId) {
     const username = Meteor.users.findOne(this.userId).username;
     return Instruments.collection.find({ owner: username });
+  }
+  return this.ready();
+});
+
+Meteor.publish(MusiciansGenres.userPublicationName, function () {
+  if (this.userId) {
+    const username = Meteor.users.findOne(this.userId).username;
+    return MusiciansGenres.collection.find({ owner: username });
+  }
+  return this.ready();
+});
+
+Meteor.publish(MusiciansInstruments.userPublicationName, function () {
+  if (this.userId) {
+    const username = Meteor.users.findOne(this.userId).username;
+    return MusiciansInstruments.collection.find({ owner: username });
   }
   return this.ready();
 });
