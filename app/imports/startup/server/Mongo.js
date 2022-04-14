@@ -1,57 +1,56 @@
 import { Meteor } from 'meteor/meteor';
-import { Stuffs } from '../../api/stuff/Stuff.js';
+import { Accounts } from 'meteor/accounts-base';
+import { Roles } from 'meteor/alanning:roles';
 import { Musicians } from '../../api/musician/Musician';
 import { Genres } from '../../api/genre/Genre';
 import { Instruments } from '../../api/instruments/Instruments';
+import { MusiciansInstruments } from '../../api/musician/MusicianInstrument';
+import { MusiciansGenres } from '../../api/musician/MusicianGenre';
 
 /* eslint-disable no-console */
 
-// Initialize the database with a default data document.
-function addData(data) {
-  console.log(`  Adding: ${data.name} (${data.owner})`);
-  Stuffs.collection.insert(data);
-}
-
-function addMusicians(data) {
-  console.log(` Adding: ${data.name} (${data.owner})`);
-  Musicians.collection.insert(data);
-}
-
-function addGenres(data) {
-  console.log(` Adding: ${data.name} `);
-  Genres.collection.insert(data);
-}
-
-function addInstruments(data) {
-  console.log(` Adding: ${data.name} `);
-  Instruments.collection.insert(data);
-}
-
-// Initialize the StuffsCollection if empty.
-if (Stuffs.collection.find().count() === 0) {
-  if (Meteor.settings.defaultMusicians) {
-    console.log('Creating default data.');
-    Meteor.settings.defaultData.map(data => addData(data));
+/** Define a user in the Meteor accounts package. This enables login. Username is the email address. */
+function createUser(email, role) {
+  const userID = Accounts.createUser({ username: email, email, password: 'foo' });
+  if (role === 'admin') {
+    Roles.createRole(role, { unlessExists: true });
+    Roles.addUsersToRoles(userID, 'admin');
   }
 }
 
-if (Musicians.collection.find().count() === 0) {
-  if (Meteor.settings.defaultData) {
-    console.log('Creating default musicians.');
-    Meteor.settings.defaultMusicians.map(data => addMusicians(data));
-  }
+/** Define an interest.  Has no effect if interest already exists. */
+function addInstrument(instrument) {
+  Instruments.collection.update({ name: instrument }, { $set: { name: instrument } }, { upsert: true });
 }
 
-if (Genres.collection.find().count() === 0) {
-  if (Meteor.settings.defaultData) {
-    console.log('Creating default genres.');
-    Meteor.settings.defaultGenres.map(data => addGenres(data));
-  }
+function addGenre(genre) {
+  Genres.collection.update({ name: genre }, { $set: { name: genre } }, { upsert: true });
 }
 
-if (Instruments.collection.find().count() === 0) {
-  if (Meteor.settings.defaultData) {
-    console.log('Creating default instruments.');
-    Meteor.settings.defaultInstruments.map(data => addInstruments(data));
+/** Defines a new user and associated profile. Error if user already exists. */
+function addMusician({ name, age, owner, role, instruments, genres }) {
+  console.log(`Defining profile ${owner}`);
+  // Define the user in the Meteor accounts package.
+  createUser(owner, role);
+  // Create the profile.
+  Musicians.collection.insert({ name, age, owner });
+  // Add interests and projects.
+  instruments.map(instrument => MusiciansInstruments.collection.insert({ musician: owner, instrument }));
+  genres.map(genre => MusiciansGenres.collection.insert({ musician: owner, genre }));
+  // Make sure interests are defined in the Interests collection if they weren't already.
+  instruments.map(instrument => addInstrument(instrument));
+  genres.map(genre => addGenre(genre));
+}
+
+/** Initialize DB if it appears to be empty (i.e. no users defined.) */
+if (Meteor.users.find().count() === 0) {
+  if (Meteor.settings.defaultInstruments && Meteor.settings.defaultMusicians) {
+    console.log('Creating the default profiles');
+    Meteor.settings.defaultMusicians.map(musician => addMusician(musician));
+    console.log('Creating the default projects');
+    Meteor.settings.defaultInstruments.map(instrument => addInstrument(instrument));
+    Meteor.settings.defaultGenre.map(genre => addGenre(genre));
+  } else {
+    console.log('Cannot initialize the database!  Please invoke meteor with a settings file.');
   }
 }
