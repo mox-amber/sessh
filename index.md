@@ -84,7 +84,10 @@ You can view our [project board](https://github.com/mox-amber/sessh/projects/1)
 if you would like to see how we divided our tasks.
 
 ### Milestone 2
-[TODO]
+For milestone 2, our goal now is to add the functionalities that we were unable to add in milestone 1. That, and also to make our application look better in general.
+
+You can view our [project board](https://github.com/mox-amber/sessh/projects/2)
+if you would like to see how we divided our tasks.
 
 ## The Team
 * Kaiwi Akioka
