@@ -90,3 +90,25 @@
 .spacer {
   margin-bottom: 20px;
 }
+
+#info {
+  margin-bottom: 50px;
+  font-size: 40px;
+}
+
+#bolder {
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+#Account-Title {
+  color: var(--english-violet);
+  font-size: 50px;
+}
+
+#edit-button {
+  background-color: var(--ash-gray);
+  color: var(--english-violet);
+  border: none;
+  box-shadow: none;
+}
