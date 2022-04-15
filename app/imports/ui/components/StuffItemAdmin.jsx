@@ -11,6 +11,7 @@ class StuffItemAdmin extends React.Component {
         <Table.Cell>{this.props.stuff.quantity}</Table.Cell>
         <Table.Cell>{this.props.stuff.condition}</Table.Cell>
         <Table.Cell>{this.props.stuff.owner}</Table.Cell>
+        <Table.Cell>{this.props.stuff.owner}</Table.Cell>
       </Table.Row>
     );
   }

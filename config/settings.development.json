@@ -12,7 +12,8 @@
   ],
 
   "defaultMusicians": [
-    { "name": "Kaiwi Akioka", "age":  19, "owner":  "admin@foo.com"}
+    { "name": "Kaiwi Akioka", "age":  19, "owner":  "admin@foo.com"},
+    { "name": "Joe Johnson", "age":  21, "owner":  "john@foo.com"}
   ],
 
   "defaultGenres": [
