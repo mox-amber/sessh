@@ -65,7 +65,9 @@ edit profile page.
 ### Find Page
 The find page lets users discover and filter musicians based on their preferences.
 
-![](doc/find-page.png)
+![](doc/search-page.png)
+
+![](doc/search-page-filter.png)
 
 
 ## Developer Guide
