@@ -12,26 +12,27 @@
   ],
 
   "defaultMusicians": [
-    { "name": "Kaiwi Akioka", "age":  19, "owner":  "admin@foo.com", "instruments":  ["Guitar"], "genres":  ["Rock and Roll"]}
+    { "name": "Kaiwi Akioka", "age":  19, "owner":  "admin@foo.com"},
+    { "name": "Joe Johnson", "age":  21, "owner":  "john@foo.com"}
   ],
 
   "defaultGenres": [
-    "Pop",
-    "Rock and Roll",
-    "Hawaiian",
-    "Jazz",
-    "Hip Hop",
-    "Gangster Rap",
-    "Classical"
+    { "name": "Pop" },
+    { "name": "Rock and Roll" },
+    { "name": "Hawaiian" },
+    { "name":  "Jazz" },
+    { "name":  "Hip Hop" },
+    { "name":  "Gangster Rap" },
+    { "name":  "Classical" }
   ],
 
   "defaultInstruments": [
-    "Guitar",
-    "Banjo",
-    "Viola",
-    "Ukulele",
-    "Mbira",
-    "Clarinet",
-    "Cowbell"
+    { "name":  "Guitar" },
+    { "name":  "Banjo" },
+    { "name":  "Viola" },
+    { "name":  "Ukulele" },
+    { "name":  "Mbira" },
+    { "name":  "Clarinet" },
+    { "name":  "Cowbell" }
   ]
 }

@@ -14,6 +14,7 @@ import Signup from '../pages/Signup';
 import Signout from '../pages/Signout';
 import UserPage from '../pages/UserPage';
 import SearchMusician from '../pages/SearchMusician';
+import ListMusiciansAdmin from '../pages/ListMusiciansAdmin';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 class App extends React.Component {
@@ -27,9 +28,11 @@ class App extends React.Component {
             <Route path="/signin" component={Signin}/>
             <Route path="/signup" component={Signup}/>
             <Route path="/signout" component={Signout}/>
-            <Route path="/edit-profile" component={EditProfile}/>
-            <ProtectedRoute path="/account" component={UserPage}/>
+            <ProtectedRoute path="/edit-profile/" component={EditProfile}/>
+            {/* <ProtectedRoute path="/list" component={ListStuff}/> */}
             <ProtectedRoute path="/search" component={SearchMusician}/>
+            {/* <ProtectedRoute path="/add" component={AddStuff}/> */}
+            <AdminProtectedRoute path="/admin" component={ListMusiciansAdmin}/>
             <Route component={NotFound}/>
           </Switch>
           <Footer/>
