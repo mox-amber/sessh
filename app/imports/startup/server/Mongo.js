@@ -33,6 +33,7 @@ function addGenre(genre) {
 function addMusician({ name, age, owner, role, instruments, genres }) {
   console.log(`Defining profile ${owner}`);
   // Define the user in the Meteor accounts package.
+  console.log('Create User: ', owner, role);
   createUser(owner, role);
   // Create the profile.
   Musicians.collection.insert({ name, age, owner });

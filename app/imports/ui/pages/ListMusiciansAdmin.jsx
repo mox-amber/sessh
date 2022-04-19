@@ -5,6 +5,8 @@ import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import { Musicians } from '../../api/musician/Musician';
 import MusicianItemAdmin from '../components/MusicianItemAdmin';
+import { MusiciansGenres } from '../../api/musician/MusicianGenre';
+import { MusiciansInstruments } from '../../api/musician/MusicianInstrument';
 
 /** Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
 class ListMusiciansAdmin extends React.Component {
@@ -31,7 +33,12 @@ class ListMusiciansAdmin extends React.Component {
             {this.props.musicians.map((musician) => <MusicianItemAdmin key={musician._id} musician={musician} />)}
           </Table.Body>
         </Table>
+        <Header as='h3'>
+          {this.props.musiciansInstruments[0].musician}
+          {this.props.musiciansInstruments[0].instrument}
+        </Header>
       </Container>
+
     );
   }
 }
@@ -39,6 +46,8 @@ class ListMusiciansAdmin extends React.Component {
 // Require an array of Stuff documents in the props.
 ListMusiciansAdmin.propTypes = {
   musicians: PropTypes.array.isRequired,
+  musiciansGenres: PropTypes.array.isRequired,
+  musiciansInstruments: PropTypes.array.isRequired,
   ready: PropTypes.bool.isRequired,
 };
 
@@ -46,12 +55,19 @@ ListMusiciansAdmin.propTypes = {
 export default withTracker(() => {
   // Get access to Stuff documents.
   const subscription = Meteor.subscribe(Musicians.adminPublicationName);
+  const subscription2 = Meteor.subscribe(MusiciansGenres.userPublicationName);
+  const subscription3 = Meteor.subscribe(MusiciansInstruments.userPublicationName);
   // Determine if the subscription is ready
-  const ready = subscription.ready();
+  const ready = subscription.ready() && subscription3.ready() && subscription2.ready();
   // Get the Stuff documents
   const musicians = Musicians.collection.find({}).fetch();
+  const musiciansGenres = MusiciansGenres.collection.find({}).fetch();
+  const musiciansInstruments = MusiciansInstruments.collection.find({}).fetch();
+  console.log(ready, musicians, musiciansGenres, musiciansInstruments);
   return {
     musicians,
+    musiciansGenres,
+    musiciansInstruments,
     ready,
   };
 })(ListMusiciansAdmin);

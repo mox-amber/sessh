@@ -43,16 +43,16 @@ Meteor.publish(Instruments.userPublicationName, function () {
 
 Meteor.publish(MusiciansGenres.userPublicationName, function () {
   if (this.userId) {
-    const username = Meteor.users.findOne(this.userId).username;
-    return MusiciansGenres.collection.find({ owner: username });
+    // const username = Meteor.users.findOne(this.userId).username;
+    return MusiciansGenres.collection.find();
   }
   return this.ready();
 });
 
 Meteor.publish(MusiciansInstruments.userPublicationName, function () {
   if (this.userId) {
-    const username = Meteor.users.findOne(this.userId).username;
-    return MusiciansInstruments.collection.find({ owner: username });
+    // const username = Meteor.users.findOne(this.userId).username;
+    return MusiciansInstruments.collection.find();
   }
   return this.ready();
 });
