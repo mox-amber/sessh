@@ -19,24 +19,22 @@ Meteor.publish(Stuffs.userPublicationName, function () {
 
 Meteor.publish(Musicians.userPublicationName, function () {
   if (this.userId) {
-    const username = Meteor.users.findOne(this.userId).username;
-    return Musicians.collection.find({ owner: username });
+    // const username = Meteor.users.findOne(this.userId).username;
+    return Musicians.collection.find();
   }
   return this.ready();
 });
 
 Meteor.publish(Genres.userPublicationName, function () {
   if (this.userId) {
-    const username = Meteor.users.findOne(this.userId).username;
-    return Genres.collection.find({ owner: username });
+    return Genres.collection.find();
   }
   return this.ready();
 });
 
 Meteor.publish(Instruments.userPublicationName, function () {
   if (this.userId) {
-    const username = Meteor.users.findOne(this.userId).username;
-    return Instruments.collection.find({ owner: username });
+    return Instruments.collection.find();
   }
   return this.ready();
 });
@@ -67,10 +65,10 @@ Meteor.publish(Stuffs.adminPublicationName, function () {
 });
 
 Meteor.publish(Musicians.adminPublicationName, function () {
-  if (this.userId && Roles.userIsInRole(this.userId, 'admin')) {
-    return Musicians.collection.find();
-  }
-  return this.ready();
+  // if (this.userId && Roles.userIsInRole(this.userId, 'admin')) {
+  //   return Musicians.collection.find();
+  // }
+  // return this.ready();
 });
 
 // alanning:roles publication
