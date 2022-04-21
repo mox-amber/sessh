@@ -15,6 +15,7 @@ class MusiciansCollection {
     this.schema = new SimpleSchema({
       name: String,
       age: Number,
+      image: String,
       owner: String,
     }, { tracker: Tracker });
     // Attach the schema to the collection, so all attempts to insert a document are checked against schema.
