@@ -71,14 +71,14 @@ The find page lets users discover and filter musicians based on their preference
 
 
 ## Developer Guide
-# Download to local machine
+Download to local machine
 Using [github repository](https://github.com/mox-amber/sessh), click on Code to clone the repository into Github Desktop. This will open up Github Desktop and allow you to view the repository in your local machine. 
 
-# Editing
+Editing
 Open your editor (ex. IntelliJ Idea) and create a new web project. Link your project to the file containing your repository and the project files will be displayed into your editor. 
 For any modifications, create a new branch (DO NOT make edits in the master branch) and create your changes. 
 
-# Deployment
+Deploying in your local machine
 To deploy, run meteor npm install and then meteor npm run start into the command prompt. You will get a link to copy and open into your web browser. This will allow you to view any changes that you have made locally. Once you are satisfied with your changes, push your branch into Github and the changes will be checked before merging into the master branch. 
 
 ## Development
