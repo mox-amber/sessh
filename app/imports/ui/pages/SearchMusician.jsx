@@ -39,7 +39,9 @@ class FindMusician extends React.Component {
   // Filters musicians based on preferences
   filterMusicians(collection, value, option) {
     const newCollection = collection.filter(item => (item[option] === value));
-    console.log(this.props.musicians.filter(musician => newCollection.find(item => item.musician === musician.name)));
+    // const _musicians =
+
+    // console.log(this.props.musicians.filter(musician => newCollection.find(item => item.musician === musician.name)));
 
     return (value === 'Any') ?
       this.props.musicians :
@@ -87,13 +89,13 @@ class FindMusician extends React.Component {
           </Menu.Item>
         </Menu>
         <Card.Group centered>
+          {/* {console.log(this.filtered)} */}
           {this.filtered.map((musician, index) => <MusicianItem
             key={index}
             musician={musician}
             genres={this.props.musiciansGenres.filter(genre => (genre.musician === musician.name))}
             instruments={this.props.musiciansInstruments.filter(instrument => (instrument.musician === musician.name))}
-          />)
-          }
+          />)}
         </Card.Group>
       </Container>
     );
