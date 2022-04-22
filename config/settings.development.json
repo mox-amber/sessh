@@ -5,8 +5,8 @@
   ],
 
   "defaultMusicians": [
-    { "name": "Kaiwi Akioka", "age":  19, "owner":  "admin@foo.com", "role": "admin", "instruments":  ["Guitar"], "genres":  ["Rock and Roll"]},
-    { "name":  "Jim Johnson", "age":  21, "owner":  "john@foo.com", "instruments":  ["Guitar"], "genres":  ["Rock and Roll"]}
+    { "name": "Kaiwi Akioka", "age":  19, "image": "hi", "owner":  "admin@foo.com", "role": "admin", "instruments":  ["Guitar"], "genres":  ["Rock and Roll"]},
+    { "name":  "Jim Johnson", "age":  21, "image": "hi", "owner":  "john@foo.com", "instruments":  ["Guitar"], "genres":  ["Rock and Roll"]}
   ],
 
   "defaultGenres": [

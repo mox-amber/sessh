@@ -15,6 +15,7 @@ import Signout from '../pages/Signout';
 import UserPage from '../pages/UserPage';
 import SearchMusician from '../pages/SearchMusician';
 import ListMusiciansAdmin from '../pages/ListMusiciansAdmin';
+import AddMusician from '../pages/AddMusician';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 class App extends React.Component {
@@ -24,6 +25,7 @@ class App extends React.Component {
         <div>
           <NavBar/>
           <Switch>
+            <Route exact path="/add-musician" component={AddMusician}/>
             <Route exact path="/" component={Landing}/>
             <Route path="/signin" component={Signin}/>
             <Route path="/signup" component={Signup}/>
