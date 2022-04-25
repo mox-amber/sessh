@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
 class MusicianItem extends React.Component {
+
   render() {
     return (
       <Card>
@@ -14,15 +15,15 @@ class MusicianItem extends React.Component {
           {/*  src={this.props.musician.image} */}
           {/* /> */}
           <Card.Header>{this.props.musician.name}</Card.Header>
-          <Card.Description>
-            <Header as='h5'>Instruments:</Header>
-            {/* eslint-disable-next-line react/jsx-key */}
-            {this.props.instruments.map((key) => <Button size='mini'>{key.instrument}</Button>)}
-            <br/>
-            <Header as='h5'>Genres:</Header>
-            {/* eslint-disable-next-line react/jsx-key */}
-            {this.props.genres.map((key) => <Button size='mini'>{key.genre}</Button>)}
-          </Card.Description>
+        </Card.Content>
+        <Card.Content extra>
+          <Header as='h5'>Instruments:</Header>
+          {this.props.instruments.map((key) => <Button key={key} size='mini'>{key.instrument}</Button>)}
+        </Card.Content>
+        <Card.Content extra>
+          <Header as='h5'>Instruments:</Header>
+          {/* eslint-disable-next-line react/jsx-key */}
+          {this.props.genres.map((key) => <Button key={key} size='mini'>{key.genre}</Button>)}
         </Card.Content>
       </Card>
     );
