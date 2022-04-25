@@ -73,6 +73,21 @@ Meteor.publish(Musicians.adminPublicationName, function () {
   return this.ready();
 });
 
+// Publication for search page
+// Needs security
+Meteor.publish('Search', function () {
+  if (this.userId) {
+    return [
+      Musicians.collection.find(),
+      MusiciansInstruments.collection.find(),
+      MusiciansGenres.collection.find(),
+      Genres.collection.find(),
+      Instruments.collection.find(),
+    ];
+  }
+  return this.ready();
+});
+
 // alanning:roles publication
 // Recommended code to publish roles for each user.
 Meteor.publish(null, function () {

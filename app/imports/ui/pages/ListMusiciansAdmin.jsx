@@ -33,10 +33,6 @@ class ListMusiciansAdmin extends React.Component {
             {this.props.musicians.map((musician) => <MusicianItemAdmin key={musician._id} musician={musician} />)}
           </Table.Body>
         </Table>
-        <Header as='h3'>
-          {this.props.musiciansInstruments[0].musician}
-          {this.props.musiciansInstruments[0].instrument}
-        </Header>
       </Container>
 
     );

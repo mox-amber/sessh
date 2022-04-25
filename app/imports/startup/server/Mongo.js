@@ -30,13 +30,13 @@ function addGenre(genre) {
 }
 
 /** Defines a new user and associated profile. Error if user already exists. */
-function addMusician({ name, age, owner, role, instruments, genres }) {
+function addMusician({ name, age, image, owner, role, instruments, genres }) {
   console.log(`Defining profile ${owner}`);
   // Define the user in the Meteor accounts package.
   console.log('Create User: ', owner, role);
   createUser(owner, role);
   // Create the profile.
-  Musicians.collection.insert({ name, age, owner });
+  Musicians.collection.insert({ name, age, image, owner });
   // Add interests and projects.
   instruments.map(instrument => MusiciansInstruments.collection.insert({ musician: name, instrument }));
   genres.map(genre => MusiciansGenres.collection.insert({ musician: name, genre }));
