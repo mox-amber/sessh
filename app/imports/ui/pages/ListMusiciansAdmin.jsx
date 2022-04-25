@@ -59,7 +59,7 @@ export default withTracker(() => {
   const musicians = Musicians.collection.find({}).fetch();
   const musiciansGenres = MusiciansGenres.collection.find({}).fetch();
   const musiciansInstruments = MusiciansInstruments.collection.find({}).fetch();
-  console.log(ready, musicians, musiciansGenres, musiciansInstruments);
+  // console.log(ready, musicians, musiciansGenres, musiciansInstruments);
   return {
     musicians,
     musiciansGenres,
