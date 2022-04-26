@@ -5,8 +5,8 @@
   ],
 
   "defaultMusicians": [
-    { "name": "Kaiwi Akioka", "age":  19, "image": "hi", "owner":  "admin@foo.com", "role": "admin", "instruments":  ["Guitar"], "genres":  ["Rock and Roll"]},
-    { "name":  "Jim Johnson", "age":  21, "image": "hi", "owner":  "john@foo.com", "instruments":  ["Guitar"], "genres":  ["Rock and Roll"]}
+    { "name": "Kaiwi Akioka", "age":  19, "image": "https://cdn.discordapp.com/attachments/444031515198881793/936592595012960327/ED3BE758-AD99-4310-A4A2-71B655FBFA12.jpg", "owner":  "admin@foo.com", "role": "admin", "instruments":  ["Guitar"], "genres":  ["Rock and Roll"]},
+    { "name":  "Jim Johnson", "age":  21, "image": "https://cdn.discordapp.com/attachments/708599947884363826/968626254125338664/sessh1.PNG", "owner":  "john@foo.com", "instruments":  ["Guitar, Clarinet"], "genres":  ["Rock and Roll, Hip Hop"]}
   ],
 
   "defaultGenres": [

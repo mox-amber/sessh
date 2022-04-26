@@ -1,5 +1,6 @@
 import React from 'react';
-import { Meteor, _ } from 'meteor/meteor';
+import { Meteor } from 'meteor/meteor';
+import { _ } from 'meteor/underscore';
 import { Container, Grid, Loader, Image, Header, Menu } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
@@ -12,7 +13,7 @@ import { MusiciansInstruments } from '../../api/musician/MusicianInstrument';
 class AccountPage extends React.Component {
   getIndex(data, wProperty, tag) {
     const theArray = _.pluck(data, wProperty);
-    const index = _.findIndex(theArray, function (val) { return val === tag; });
+    const index = theArray.findIndex(element => element === tag);
     return index;
   }
 
@@ -28,29 +29,28 @@ class AccountPage extends React.Component {
         <Header id='Account-Title' as="h2" textAlign='center'>Your Account</Header>
         <Grid centered columns={2}>
           <Grid.Column floated='left'>
-            <Image src='https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.CbYQWsJA-vXjze_S_8NQXAAAAA%26pid%3DApi&f=1' size='large'/>
+            <Image src={this.props.musicians[this.getIndex(this.props.musicians, 'owner', this.props.apple[0].username)].image} size='large'/>
           </Grid.Column>
           <Grid.Column>
             <Container id='info'>
               <div id='bolder'>Name:</div>
-              <div>{this.getIndex(this.props.musicians, 'owner', this.props.apple[0].username)}</div>
-              <div>{this.props.musicians[0].name}</div>
+              <div>{this.props.musicians[this.getIndex(this.props.musicians, 'owner', this.props.apple[0].username)].name}</div>
             </Container>
             <Container id='info'>
               <div id='bolder'>Age:</div>
-              <div>{this.props.musicians[0].age}</div>
+              <div>{this.props.musicians[this.getIndex(this.props.musicians, 'owner', this.props.apple[0].username)].age}</div>
             </Container>
             <Container id='info'>
               <div id='bolder'>Genres:</div>
-              <div>{this.props.musiciansGenres[0].genre}</div>
+              <div>{this.props.musiciansGenres[this.getIndex(this.props.musiciansGenres, 'musician', this.props.musicians[this.getIndex(this.props.musicians, 'owner', this.props.apple[0].username)].name)].genre}</div>
             </Container>
             <Container id='info'>
               <div id='bolder'>Instruments:</div>
-              <div>{this.props.musiciansInstruments[0].instrument}</div>
+              <div>{this.props.musiciansInstruments[this.getIndex(this.props.musiciansGenres, 'musician', this.props.musicians[this.getIndex(this.props.musicians, 'owner', this.props.apple[0].username)].name)].instrument}</div>
             </Container>
             <Container id='info'>
               <div id='bolder'>Email:</div>
-              <div>{this.props.musicians[0].owner}</div>
+              <div>{this.props.musicians[this.getIndex(this.props.musicians, 'owner', this.props.apple[0].username)].owner}</div>
             </Container>
             <Menu id='edit-button' borderless compact size='large'>
               <Menu.Item as={NavLink} activeClassName="active" exact to="/edit-profile" key='edit-profile' id='footer'>edit</Menu.Item>
