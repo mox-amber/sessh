@@ -33,10 +33,6 @@ class ListMusiciansAdmin extends React.Component {
             {this.props.musicians.map((musician) => <MusicianItemAdmin key={musician._id} musician={musician} />)}
           </Table.Body>
         </Table>
-        <Header as='h3'>
-          {this.props.musiciansInstruments[0].musician}
-          {this.props.musiciansInstruments[0].instrument}
-        </Header>
       </Container>
 
     );
@@ -63,7 +59,7 @@ export default withTracker(() => {
   const musicians = Musicians.collection.find({}).fetch();
   const musiciansGenres = MusiciansGenres.collection.find({}).fetch();
   const musiciansInstruments = MusiciansInstruments.collection.find({}).fetch();
-  console.log(ready, musicians, musiciansGenres, musiciansInstruments);
+  // console.log(ready, musicians, musiciansGenres, musiciansInstruments);
   return {
     musicians,
     musiciansGenres,
