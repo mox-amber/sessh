@@ -32,7 +32,7 @@ Along with the feature suite, there will be a dedicated group of 'super-users' w
 capabilities that ensure the website adheres to our applications policy.
 
 ## Deployment
-If you would like to see our application in action you can visit [our live site](http://161.35.230.24/#/).
+If you would like to see our application in action you can visit [our live site](https://sessh.xyz/#/).
 
 ## User Guide
 The following is a walkthrough of the application.
