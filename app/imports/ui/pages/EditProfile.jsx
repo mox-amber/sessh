@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, Loader, Header, Segment, Input } from 'semantic-ui-react';
+import { Grid, Loader, Header, Segment } from 'semantic-ui-react';
 import swal from 'sweetalert';
 import { AutoForm, ErrorsField, HiddenField, NumField, SubmitField, TextField } from 'uniforms-semantic';
 import { Meteor } from 'meteor/meteor';
@@ -15,8 +15,8 @@ class EditProfile extends React.Component {
 
   // On successful submit, insert the data.
   submit(data) {
-    const { name, age, _id } = data;
-    Musicians.collection.update(_id, { $set: { name, age } }, (error) => (error ?
+    const { name, age, image, _id } = data;
+    Musicians.collection.update(_id, { $set: { name, age, image } }, (error) => (error ?
       swal('Error', error.message, 'error') :
       swal('Success', 'Item updated successfully', 'success')));
   }
@@ -36,13 +36,7 @@ class EditProfile extends React.Component {
             <Segment>
               <TextField name='name'/>
               <NumField name='age' decimal={false}/>
-              <b>Instruments:</b>
-              <br/>
-              <Input fluid placeholder='Instrument' />
-              <br/>
-              <b>Genres:</b>
-              <br/>
-              <Input fluid placeholder='Genre' />
+              <TextField name='image'/>
               <br/>
               <br/>
               <SubmitField value='Submit'/>

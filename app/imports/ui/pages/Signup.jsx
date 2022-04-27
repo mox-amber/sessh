@@ -68,6 +68,27 @@ class Signup extends React.Component {
                   onChange={this.handleChange}
                 />
                 <Form.Input
+                  label="Name"
+                  id="signup-form-name"
+                  icon="info"
+                  iconPosition="left"
+                  name="name"
+                  placeholder="Name"
+                  type="name"
+                  onChange={this.handleChange}
+                />
+                <Form.Input
+                  label="Age"
+                  id="signup-form-age"
+                  icon="plus"
+                  iconPosition="left"
+                  name="age"
+                  placeholder="Age"
+                  type="number"
+                  max={99}
+                  onChange={this.handleChange}
+                />
+                <Form.Input
                   label="Instruments"
                   id="signup-form-instruments"
                   icon="music"
@@ -77,6 +98,10 @@ class Signup extends React.Component {
                   placeholder="Instruments"
                   onChange={this.handleChange}
                 />
+                <select name="instruments" multiple="" className="ui fluid dropdown">
+                  <option value="">Instruments</option>
+                  <option value="angular">Angular</option>
+                </select>
                 <Form.Input
                   label="Genres"
                   id="signup-form-genres"
@@ -85,6 +110,16 @@ class Signup extends React.Component {
                   name="genre"
                   type="genre"
                   placeholder="Genre"
+                  onChange={this.handleChange}
+                />
+                <Form.Input
+                  label="Image"
+                  id="signup-form-image"
+                  icon="file image"
+                  iconPosition="left"
+                  name="genre"
+                  type="genre"
+                  placeholder="Image"
                   onChange={this.handleChange}
                 />
                 <Form.Button id="signup-form-submit" content="Submit"/>
