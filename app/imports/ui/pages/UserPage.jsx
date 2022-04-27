@@ -17,6 +17,20 @@ class AccountPage extends React.Component {
     return index;
   }
 
+  getInfo(data, wProperty, key) {
+    const array = _.filter(data, function (account) { return account.musician === key; });
+    const infoArray = _.pluck(array, wProperty);
+    const trueArray = [];
+    for (let i = 0; i < infoArray.length; i++) {
+      if (i !== infoArray.length - 1) {
+        trueArray.push(`${infoArray[i]}, `);
+      } else {
+        trueArray.push(infoArray[i]);
+      }
+    }
+    return trueArray;
+  }
+
   // If the subscription(s) have been received, render the page, otherwise show a loading icon.
   render() {
     return (this.props.ready) ? this.renderPage() : <Loader active>Getting data</Loader>;
@@ -42,11 +56,11 @@ class AccountPage extends React.Component {
             </Container>
             <Container id='info'>
               <div id='bolder'>Genres:</div>
-              <div>{this.props.musiciansGenres[this.getIndex(this.props.musiciansGenres, 'musician', this.props.musicians[this.getIndex(this.props.musicians, 'owner', this.props.apple[0].username)].name)].genre}</div>
+              <div>{this.getInfo(this.props.musiciansGenres, 'genre', this.props.musicians[this.getIndex(this.props.musicians, 'owner', this.props.apple[0].username)].name)}</div>
             </Container>
             <Container id='info'>
               <div id='bolder'>Instruments:</div>
-              <div>{this.props.musiciansInstruments[this.getIndex(this.props.musiciansGenres, 'musician', this.props.musicians[this.getIndex(this.props.musicians, 'owner', this.props.apple[0].username)].name)].instrument}</div>
+              <div>{this.getInfo(this.props.musiciansInstruments, 'instrument', this.props.musicians[this.getIndex(this.props.musicians, 'owner', this.props.apple[0].username)].name)}</div>
             </Container>
             <Container id='info'>
               <div id='bolder'>Email:</div>
