@@ -40,7 +40,7 @@ The following is a walkthrough of the application.
 ### Landing Page
 When visiting the site, a user is greeted with our landing page describing the
 purpose of the application.
-![](doc/landing-page.png)
+![](doc/landing-page.PNG)
 
 A user can log in by clicking the link in the upper right corner.
 
