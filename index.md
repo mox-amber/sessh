@@ -118,8 +118,7 @@ You can view our [project board](https://github.com/mox-amber/sessh/projects/2)
 if you would like to see how we divided our tasks.
 
 ### Milestone 3
-For milestone 3, was to build upon our work in milestone 2 by filling the "odds and ends" by
-improving the overall application look, fix remaining bugs, and finalizing the project.
+The objectives for this milestone were to build upon our work to build upon our work in milestone 2 by filling the "odds and ends" by improving the overall application look, fix remaining bugs, and finalizing the project.
 
 You can view our [project board](https://github.com/mox-amber/sessh/projects/3)
 if you would like to see how we divided our tasks.
