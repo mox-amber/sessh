@@ -75,6 +75,10 @@ The search page lets users discover and filter musicians based on their preferen
 
 ![](doc/search-page-filter.PNG)
 
+### Add Musician
+A user can add a musician to the database.
+![](doc/add-musician.PNG)
+
 ### Signing Out
 A user can sign out from the same dropdown the used to log in and will be taken
 to the sign out page for confirmation that the action was a success.
