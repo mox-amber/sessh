@@ -38,7 +38,11 @@ class NavBar {
   }
 
   async gotoUserDashboardPage(testController) {
-    await testController.click('#user-dashboard-page');
+    await testController.click('#navbar-user-dashboard');
+  }
+
+  async gotoSearchPage(testController) {
+    await testController.click('#navbar-searchPage');
   }
 }
 

@@ -3,6 +3,8 @@ import { signinPage } from './signin.page';
 import { signoutPage } from './signout.page';
 import { navBar } from './navbar.component';
 import { userDashboardPage } from './userdashboard.page';
+// eslint-disable-next-line import/named
+import { searchPage } from './search.page';
 
 /* global fixture:false, test:false */
 
@@ -29,5 +31,13 @@ test('Test that user dashboard works', async (testController) => {
   await signinPage.signin(testController, credentials.username, credentials.password);
   await navBar.gotoUserDashboardPage(testController);
   await userDashboardPage.isDisplayed(testController);
+
+});
+
+test('Test that search page works', async (testController) => {
+  await navBar.gotoSigninPage(testController);
+  await signinPage.signin(testController, credentials.username, credentials.password);
+  await navBar.gotoSearchPage(testController);
+  await searchPage.isDisplayed(testController);
 
 });
