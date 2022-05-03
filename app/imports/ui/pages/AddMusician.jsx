@@ -39,7 +39,7 @@ class AddMusician extends React.Component {
     let fRef = null;
     return (
       <Grid container centered>
-        <Grid.Column>
+        <Grid.Column id='addPage'>
           <Header as="h2" textAlign="center">Add Musician</Header>
           <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => this.submit(data, fRef)} >
             <Segment>

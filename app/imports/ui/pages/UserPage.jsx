@@ -39,7 +39,7 @@ class AccountPage extends React.Component {
   // Render the page once subscriptions have been received.
   renderPage() {
     return (
-      <Container id="user-dashboard-page">
+      <Container id="userPage">
         <Header id='Account-Title' as="h2" textAlign='center'>Your Account</Header>
         <Grid centered columns={2}>
           <Grid.Column floated='left'>

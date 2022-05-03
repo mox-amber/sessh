@@ -1,8 +1,8 @@
 import { Selector } from 'testcafe';
 
-class UserDashboardPage {
+class UserPage {
   constructor() {
-    this.pageId = '#user-dashboard-page';
+    this.pageId = '#userPage';
     this.pageSelector = Selector(this.pageId);
   }
 
@@ -13,4 +13,4 @@ class UserDashboardPage {
   }
 }
 
-export const userDashboardPage = new UserDashboardPage();
+export const userPage = new UserPage();
