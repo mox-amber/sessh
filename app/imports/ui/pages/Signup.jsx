@@ -98,10 +98,6 @@ class Signup extends React.Component {
                   placeholder="Instruments"
                   onChange={this.handleChange}
                 />
-                <select name="instruments" multiple="" className="ui fluid dropdown">
-                  <option value="">Instruments</option>
-                  <option value="angular">Angular</option>
-                </select>
                 <Form.Input
                   label="Genres"
                   id="signup-form-genres"
