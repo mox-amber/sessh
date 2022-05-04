@@ -32,24 +32,30 @@ Along with the feature suite, there will be a dedicated group of 'super-users' w
 capabilities that ensure the website adheres to our applications policy.
 
 ## Deployment
-If you would like to see our application in action you can visit [our live site](http://161.35.230.24/#/).
+If you would like to see our application in action you can visit [our live site](https://sessh.xyz/#/).
 
 ## User Guide
 The following is a walkthrough of the application.
 
 ### Landing Page
 When visiting the site, a user is greeted with our landing page describing the
-purpose of the application. 
-
+purpose of the application.
 ![](doc/landing-page.PNG)
 
-A user can sign in by clicking the link in the upper right corner.
+A user can log in by clicking the link in the upper right corner.
 
-### Sign In
-When signing in the user is taken to the sign in page where they can enter their
+### Log In
+When logging in, the user is taken to the log in page where they can enter their
 information.
-
 ![](doc/login-page.PNG)
+
+### Sign Up
+If a user does not have an account they can either signup through the link in
+the login dropdown
+![](doc/signup-page.PNG)
+
+or the login page itself.
+![](doc/signup-from-signin.PNG)
 
 ### User Dashboard
 After signing in the user is taken to their dashboard where they can view people
@@ -62,13 +68,25 @@ If the user wants to update or change their account, they will be taken to their
 edit profile page.
 ![](doc/edit-profile-page.PNG)
 
-### Find Page
-The find page lets users discover and filter musicians based on their preferences.
+### Search Page
+The search page lets users discover and filter musicians based on their preferences.
 
 ![](doc/search-page.PNG)
 
 ![](doc/search-page-filter.PNG)
 
+### Add Musician
+A user can add a musician to the database.
+![](doc/add-musician.PNG)
+
+### Signing Out
+A user can sign out from the same dropdown the used to log in and will be taken
+to the sign out page for confirmation that the action was a success.
+![](doc/signout-page.PNG)
+
+### Admin Page
+An admin page is given that shows the list of all musicians and their information.
+![](doc/admin.PNG)
 
 ## Developer Guide
 ### Download to local machine
@@ -97,6 +115,12 @@ if you would like to see how we divided our tasks.
 For milestone 2, our goal now is to add the functionalities that we were unable to add in milestone 1. That, and also to make our application look better in general.
 
 You can view our [project board](https://github.com/mox-amber/sessh/projects/2)
+if you would like to see how we divided our tasks.
+
+### Milestone 3
+The objectives for this milestone were to build upon our work to build upon our work in milestone 2 by filling the "odds and ends" by improving the overall application look, fix remaining bugs, and finalizing the project.
+
+You can view our [project board](https://github.com/mox-amber/sessh/projects/3)
 if you would like to see how we divided our tasks.
 
 ## The Team
