@@ -37,7 +37,29 @@ class EditProfile extends React.Component {
               <TextField name='name'/>
               <NumField name='age' decimal={false}/>
               <TextField name='image'/>
+              <label><strong>Instruments</strong></label>
+              <select name="instruments" multiple="" className="ui fluid dropdown">
+                <option value="">Instruments</option>
+                <option value="Guitar">Guitar</option>
+                <option value="Banjo">Banjo</option>
+                <option value="Viola">Viola</option>
+                <option value="Ukulele">Ukelele</option>
+                <option value="Mbira">Mbira</option>
+                <option value="Clarinet">Gangster Rap</option>
+                <option value="Cowbell">Classical</option>
+              </select>
               <br/>
+              <label><strong>Genres</strong></label>
+              <select name="genres" multiple="" className="ui fluid dropdown">
+                <option value="">Genres</option>
+                <option value="Pop">Pop</option>
+                <option value="RockAndRoll">Rock and Roll</option>
+                <option value="Hawaiian">Hawaiian</option>
+                <option value="Jazz">Jazz</option>
+                <option value="HipHop">Hip Hop</option>
+                <option value="GangsterRap">Gangster Rap</option>
+                <option value="Classical">Classical</option>
+              </select>
               <br/>
               <SubmitField value='Submit'/>
               <br/>

@@ -6,8 +6,6 @@ import { Meteor } from 'meteor/meteor';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import SimpleSchema from 'simpl-schema';
 import { Musicians } from '../../api/musician/Musician';
-import { Instruments } from '../../api/instruments/Instruments';
-import { Genres } from '../../api/genre/Genre';
 
 // Create a schema to specify the structure of the data to appear in the form.
 const formSchema = new SimpleSchema({
@@ -25,12 +23,8 @@ class AddMusician extends React.Component {
 
   // On submit, insert the data.
   submit(data) {
-    const { name, age, image, instruments, genres } = data;
+    const { name, age, image } = data;
     const owner = Meteor.user().username;
-    Instruments.collection.insert({ instruments });
-    console.log('adding instrument');
-    Genres.collection.insert({ genres });
-    console.log('adding genre');
     Musicians.collection.insert({ name, age, image, owner },
       (error) => {
         if (error) {
@@ -39,7 +33,6 @@ class AddMusician extends React.Component {
           swal('Success', 'Musician added successfully', 'success');
         }
       });
-    console.log('added musician');
   }
 
   // Render the form. Use Uniforms: https://github.com/vazco/uniforms
