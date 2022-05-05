@@ -12,7 +12,7 @@ import { editPage } from './edit.page';
 /* global fixture:false, test:false */
 
 /** Credentials for one of the sample users defined in settings.development.json. */
-const credentials = { username: 'john@foo.com', password: 'changeme' };
+const credentials = { username: 'john@foo.com', password: 'changeme', name: 'John Foo', age: '20', image: 'https://i.pinimg.com/originals/e7/af/9e/e7af9e4eef3c9804d0496082bd7e3313.png' };
 
 fixture('meteor-application-template-react localhost test with default db')
   .page('http://localhost:3000');
@@ -29,7 +29,7 @@ test('Test that signin and signout work', async (testController) => {
   await signoutPage.isDisplayed(testController);
 });
 
-test.only('Test that user dashboard works', async (testController) => {
+test('Test that user dashboard works', async (testController) => {
   await navBar.gotoSigninPage(testController);
   await signinPage.signin(testController, credentials.username, credentials.password);
   await navBar.gotoUserDashboardPage(testController);
@@ -43,11 +43,12 @@ test('Test that search page works', async (testController) => {
   await searchPage.isDisplayed(testController);
 });
 
-test('Test that add musician page works', async (testController) => {
+test.only('Test that add musician page works', async (testController) => {
   await navBar.gotoSigninPage(testController);
   await signinPage.signin(testController, credentials.username, credentials.password);
   await navBar.gotoAddPage(testController);
   await addPage.isDisplayed(testController);
+  await addPage.add(testController, credentials.name, credentials.age, credentials.image);
 });
 
 test('Test that edit page works', async (testController) => {

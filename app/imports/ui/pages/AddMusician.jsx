@@ -43,10 +43,10 @@ class AddMusician extends React.Component {
           <Header as="h2" textAlign="center">Add Musician</Header>
           <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => this.submit(data, fRef)} >
             <Segment>
-              <TextField name='name'/>
-              <NumField name='age' decimal={false}/>
-              <TextField name='image'/>
-              <SubmitField value='Submit'/>
+              <TextField id='add-name' name='name'/>
+              <NumField id='add-age' name='age' decimal={false}/>
+              <TextField id='add-image' name='image'/>
+              <SubmitField id='add-submit' value='Submit'/>
               <ErrorsField/>
             </Segment>
           </AutoForm>
