@@ -30,12 +30,12 @@ class EditProfile extends React.Component {
   renderPage() {
     return (
       <Grid container centered>
-        <Grid.Column>
+        <Grid.Column id="editPage">
           <Header as="h2" textAlign="center">Edit Profile</Header>
           <AutoForm schema={bridge} onSubmit={data => this.submit(data)} model={this.props.doc}>
             <Segment>
-              <TextField name='name'/>
-              <NumField name='age' decimal={false}/>
+              <TextField id='name' name='name'/>
+              <NumField id='age' name='age' decimal={false}/>
               <b>Instruments:</b>
               <br/>
               <Input fluid placeholder='Instrument' />
