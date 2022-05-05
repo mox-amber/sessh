@@ -7,6 +7,7 @@ import { userPage } from './user.page';
 // eslint-disable-next-line import/named,no-unused-vars
 import { searchPage } from './search.page';
 import { addPage } from './add.page';
+import { editPage } from './edit.page';
 
 /* global fixture:false, test:false */
 
@@ -27,14 +28,14 @@ test('Test that signin and signout work', async (testController) => {
   await navBar.logout(testController);
   await signoutPage.isDisplayed(testController);
 });
-/*
+
 test.only('Test that user dashboard works', async (testController) => {
   await navBar.gotoSigninPage(testController);
   await signinPage.signin(testController, credentials.username, credentials.password);
   await navBar.gotoUserDashboardPage(testController);
   await userPage.isDisplayed(testController);
 });
-*/
+
 test('Test that search page works', async (testController) => {
   await navBar.gotoSigninPage(testController);
   await signinPage.signin(testController, credentials.username, credentials.password);
@@ -47,4 +48,12 @@ test('Test that add musician page works', async (testController) => {
   await signinPage.signin(testController, credentials.username, credentials.password);
   await navBar.gotoAddPage(testController);
   await addPage.isDisplayed(testController);
+});
+
+test('Test that edit page works', async (testController) => {
+  await navBar.gotoSigninPage(testController);
+  await signinPage.signin(testController, credentials.username, credentials.password);
+  await navBar.isLoggedIn(testController, credentials.username);
+  await navBar.gotoEditPage(testController);
+  await editPage.isDisplayed(testController);
 });
