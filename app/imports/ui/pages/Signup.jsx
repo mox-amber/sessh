@@ -89,6 +89,16 @@ class Signup extends React.Component {
                   onChange={this.handleChange}
                 />
                 <Form.Input
+                  label="Image"
+                  id="signup-form-image"
+                  icon="file image"
+                  iconPosition="left"
+                  name="genre"
+                  type="genre"
+                  placeholder="Image"
+                  onChange={this.handleChange}
+                />
+                <Form.Input
                   label="Instruments"
                   id="signup-form-instruments"
                   icon="music"
@@ -106,16 +116,6 @@ class Signup extends React.Component {
                   name="genre"
                   type="genre"
                   placeholder="Genre"
-                  onChange={this.handleChange}
-                />
-                <Form.Input
-                  label="Image"
-                  id="signup-form-image"
-                  icon="file image"
-                  iconPosition="left"
-                  name="genre"
-                  type="genre"
-                  placeholder="Image"
                   onChange={this.handleChange}
                 />
                 <Form.Button id="signup-form-submit" content="Submit"/>
