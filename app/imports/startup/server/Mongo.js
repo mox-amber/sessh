@@ -3,9 +3,10 @@ import { Accounts } from 'meteor/accounts-base';
 import { Roles } from 'meteor/alanning:roles';
 import { Musicians } from '../../api/musician/Musician';
 import { Genres } from '../../api/genre/Genre';
-import { Instruments } from '../../api/instruments/Instruments';
+import { Instruments } from '../../api/instrument/Instruments';
 import { MusiciansInstruments } from '../../api/musician/MusicianInstrument';
 import { MusiciansGenres } from '../../api/musician/MusicianGenre';
+// import { Dms } from '../../api/dm/Dms';
 
 /* eslint-disable no-console */
 
@@ -28,6 +29,13 @@ function addGenre(genre) {
   console.log(genre);
   Genres.collection.update({ name: genre }, { $set: { name: genre } }, { upsert: true });
 }
+
+/*
+function addDms(dm) {
+  console.log(dm);
+  Dms.collection.update({ name: dm }, { $set: { name: dm } }, { upsert: true });
+}
+*/
 
 /** Defines a new user and associated profile. Error if user already exists. */
 function addMusician({ name, age, image, owner, role, instruments, genres }) {
@@ -53,6 +61,7 @@ if (Meteor.users.find().count() === 0) {
     console.log('Creating the default projects');
     Meteor.settings.defaultInstruments.map(instrument => addInstrument(instrument));
     Meteor.settings.defaultGenres.map(genre => addGenre(genre));
+    // Meteor.setttings.defultDms.map(dm => addDms(dm));
   } else {
     console.log('Cannot initialize the database!  Please invoke meteor with a settings file.');
   }

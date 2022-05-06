@@ -68,13 +68,13 @@ class Signup extends React.Component {
                   onChange={this.handleChange}
                 />
                 <Form.Input
-                  label="Instruments"
+                  label="Dms"
                   id="signup-form-instruments"
                   icon="music"
                   iconPosition="left"
                   name="music"
                   type="music"
-                  placeholder="Instruments"
+                  placeholder="Dms"
                   onChange={this.handleChange}
                 />
                 <Form.Input

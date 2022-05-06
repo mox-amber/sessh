@@ -27,5 +27,9 @@
     "Mbira",
     "Clarinet",
     "Cowbell"
+  ],
+
+  "defaultDms": [
+    { "to":  "admin@foo.com", "from":  "admin@foo.com", "message":  "Hello World!"}
   ]
 }
