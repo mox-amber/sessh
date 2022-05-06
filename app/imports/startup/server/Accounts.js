@@ -3,7 +3,7 @@ import { Accounts } from 'meteor/accounts-base';
 import { Roles } from 'meteor/alanning:roles';
 
 /* eslint-disable no-console */
-
+/*
 function createUser(email, password, role) {
   console.log(`  Creating user ${email}.`);
   const userID = Accounts.createUser({
@@ -26,3 +26,5 @@ if (Meteor.users.find().count() === 0) {
     console.log('Cannot initialize the database!  Please invoke meteor with a settings file.');
   }
 }
+
+ */
