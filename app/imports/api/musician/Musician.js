@@ -16,8 +16,6 @@ class MusiciansCollection {
       name: String,
       age: Number,
       image: String,
-      instruments: { type: Array, label: 'Instruments', optional: true },
-      'instruments.$': { type: String, allowedValues: ['Pop', 'Rock and Roll', 'Hawaiian', 'Jazz', 'Hip Hop', 'Gangster Rap', 'Classical'] },
       owner: String,
     }, { tracker: Tracker });
     // Attach the schema to the collection, so all attempts to insert a document are checked against schema.

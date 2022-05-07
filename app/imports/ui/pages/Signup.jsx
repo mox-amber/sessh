@@ -67,57 +67,6 @@ class Signup extends React.Component {
                   type="password"
                   onChange={this.handleChange}
                 />
-                <Form.Input
-                  label="Name"
-                  id="signup-form-name"
-                  icon="info"
-                  iconPosition="left"
-                  name="name"
-                  placeholder="Name"
-                  type="name"
-                  onChange={this.handleChange}
-                />
-                <Form.Input
-                  label="Age"
-                  id="signup-form-age"
-                  icon="plus"
-                  iconPosition="left"
-                  name="age"
-                  placeholder="Age"
-                  type="number"
-                  max={99}
-                  onChange={this.handleChange}
-                />
-                <Form.Input
-                  label="Image"
-                  id="signup-form-image"
-                  icon="file image"
-                  iconPosition="left"
-                  name="genre"
-                  type="genre"
-                  placeholder="Image"
-                  onChange={this.handleChange}
-                />
-                <Form.Input
-                  label="Instruments"
-                  id="signup-form-instruments"
-                  icon="music"
-                  iconPosition="left"
-                  name="music"
-                  type="music"
-                  placeholder="Instruments"
-                  onChange={this.handleChange}
-                />
-                <Form.Input
-                  label="Genres"
-                  id="signup-form-genres"
-                  icon="headphones"
-                  iconPosition="left"
-                  name="genre"
-                  type="genre"
-                  placeholder="Genre"
-                  onChange={this.handleChange}
-                />
                 <Form.Button id="signup-form-submit" content="Submit"/>
               </Segment>
             </Form>

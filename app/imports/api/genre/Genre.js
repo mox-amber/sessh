@@ -2,6 +2,16 @@ import { Mongo } from 'meteor/mongo';
 import SimpleSchema from 'simpl-schema';
 import { Tracker } from 'meteor/tracker';
 
+const allGenres = {
+  genres: ['Pop', 'Rock and Roll', 'Hawaiian', 'Jazz', 'Hip Hop', 'Gangster Rap', 'Classical'],
+};
+
+// Define the structure of each document in the collection.
+const GenreSchema = new SimpleSchema({
+  genres: { type: Array, optional: true },
+  'genres.$': { type: String, allowedValues: allGenres },
+}, { tracker: Tracker });
+
 /**
  * The GenreCollection. It manages the list of genres a user can associate with their account.
  */
@@ -11,12 +21,8 @@ class GenreCollection {
     this.name = 'GenreCollection';
     // Define the Mongo collection.
     this.collection = new Mongo.Collection(this.name);
-    // Define the structure of each document in the collection.
-    this.schema = new SimpleSchema({
-      name: String,
-    }, { tracker: Tracker });
     // Attach the schema to the collection, so all attempts to insert a document are checked against schema.
-    this.collection.attachSchema(this.schema);
+    this.collection.attachSchema(GenreSchema);
     // Define names for publications and subscriptions
     this.userPublicationName = `${this.name}.publication.user`;
     this.adminPublicationName = `${this.name}.publication.admin`;

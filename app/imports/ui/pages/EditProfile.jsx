@@ -45,8 +45,8 @@ class EditProfile extends React.Component {
                 <option value="Viola">Viola</option>
                 <option value="Ukulele">Ukelele</option>
                 <option value="Mbira">Mbira</option>
-                <option value="Clarinet">Gangster Rap</option>
-                <option value="Cowbell">Classical</option>
+                <option value="Clarinet">Clarinet</option>
+                <option value="Cowbell">Cowbell</option>
               </select>
               <br/>
               <label><strong>Genres</strong></label>

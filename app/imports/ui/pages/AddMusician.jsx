@@ -4,17 +4,13 @@ import { AutoForm, ErrorsField, NumField, SubmitField, TextField } from 'uniform
 import swal from 'sweetalert';
 import { Meteor } from 'meteor/meteor';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
-import SimpleSchema from 'simpl-schema';
+import MultiSelectField from '../forms/controllers/MultiSelectField';
+import { MusicianFormSchema as formSchema } from '../forms/AddMusicianInfo';
 import { Musicians } from '../../api/musician/Musician';
-
-// Create a schema to specify the structure of the data to appear in the form.
-const formSchema = new SimpleSchema({
-  name: String,
-  age: Number,
-  image: String,
-  instruments: String,
-  genres: String,
-});
+/* import { MusiciansGenres } from '../../api/musician/MusicianGenre';
+import { Genres } from '../../api/genre/Genre';
+import { Instruments } from '../../api/instruments/Instruments';
+*/
 
 const bridge = new SimpleSchema2Bridge(formSchema);
 
@@ -22,17 +18,28 @@ const bridge = new SimpleSchema2Bridge(formSchema);
 class AddMusician extends React.Component {
 
   // On submit, insert the data.
-  submit(data) {
-    const { name, age, image } = data;
+  submit(data, formRef) {
+    let insertError;
+    const { name, age, image /* genres */ } = data; /* add instruments later */
     const owner = Meteor.user().username;
     Musicians.collection.insert({ name, age, image, owner },
-      (error) => {
-        if (error) {
-          swal('Error', error.message, 'error');
-        } else {
-          swal('Success', 'Musician added successfully', 'success');
-        }
-      });
+      (error) => { insertError = error; });
+    if (insertError) {
+      swal('Error', insertError.message, 'error');
+    } else {
+      /* Genres.collection.insert({ name, genres },
+        (error) => { insertError = error; });
+      if (insertError) {
+        swal('Error', insertError.message, 'error');
+        console.log('NOT WORKING');
+      } else {
+        console.log('WORKING');
+        swal('Success', 'The musician profile was created.', 'success');
+        formRef.reset();
+      } */
+      swal('Success', 'The musician profile was created.', 'success');
+      formRef.reset();
+    }
   }
 
   // Render the form. Use Uniforms: https://github.com/vazco/uniforms
@@ -48,7 +55,7 @@ class AddMusician extends React.Component {
               <NumField name='age' decimal={false}/>
               <TextField name='image'/>
               <TextField name='instruments'/>
-              <TextField name='genres'/>
+              <MultiSelectField name='genres' showInlineError={true} placeholder={'Select genres (optional)'}/>
               <SubmitField value='Submit'/>
               <ErrorsField/>
             </Segment>
