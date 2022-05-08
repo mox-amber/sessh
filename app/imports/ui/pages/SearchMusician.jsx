@@ -5,7 +5,7 @@ import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import { Genres } from '../../api/genre/Genre';
 import { Musicians } from '../../api/musician/Musician';
-import { Instruments } from '../../api/instruments/Instruments';
+import { Instruments } from '../../api/instrument/Instrument';
 import MusicianItem from '../components/MusicianItem';
 import { MusiciansGenres } from '../../api/musician/MusicianGenre';
 import { MusiciansInstruments } from '../../api/musician/MusicianInstrument';

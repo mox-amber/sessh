@@ -3,9 +3,10 @@ import { Roles } from 'meteor/alanning:roles';
 import { Stuffs } from '../../api/stuff/Stuff';
 import { Musicians } from '../../api/musician/Musician';
 import { Genres } from '../../api/genre/Genre';
-import { Instruments } from '../../api/instruments/Instruments';
+import { Instruments } from '../../api/instrument/Instrument';
 import { MusiciansGenres } from '../../api/musician/MusicianGenre';
 import { MusiciansInstruments } from '../../api/musician/MusicianInstrument';
+import { Dms } from '../../api/dm/Dm';
 
 // User-level publication.
 // If logged in, then publish documents owned by this user. Otherwise publish nothing.
@@ -57,6 +58,14 @@ Meteor.publish(MusiciansInstruments.userPublicationName, function () {
   return this.ready();
 });
 
+Meteor.publish(Dms.userPublicationName, function () {
+  if (this.userId) {
+    // const username = Meteor.users.findOne(this.userId).username;
+    return Dms.collection.find();
+  }
+  return this.ready();
+});
+
 // Admin-level publication.
 // If logged in and with admin role, then publish all documents from all users. Otherwise publish nothing.
 Meteor.publish(Stuffs.adminPublicationName, function () {
@@ -83,6 +92,7 @@ Meteor.publish('Search', function () {
       MusiciansGenres.collection.find(),
       Genres.collection.find(),
       Instruments.collection.find(),
+      Dms.collection.find(),
     ];
   }
   return this.ready();
