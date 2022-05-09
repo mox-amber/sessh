@@ -1,5 +1,6 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
+import { _ } from 'meteor/underscore';
 import { Container, Header, Loader } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
@@ -14,9 +15,17 @@ class ListMessages extends React.Component {
 
   // Render the page once subscriptions have been received.
   renderPage() {
+    const array = _.filter(this.props.dms, function (account) {
+      console.log(Meteor.user());
+      return account.to === Meteor.user().username;
+    });
+    const messages = _.pluck(array, 'message');
+    console.log(messages);
+
     return (
       <Container>
         <Header as="h2" textAlign="center">Messages</Header>
+        <div>{messages}</div>
       </Container>
     );
   }
