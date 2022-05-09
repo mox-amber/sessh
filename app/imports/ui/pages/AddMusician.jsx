@@ -11,7 +11,7 @@ import { Musicians } from '../../api/musician/Musician';
 const formSchema = new SimpleSchema({
   name: String,
   age: Number,
-  image: String,
+  image: { type: String, optional: true },
 });
 
 const bridge = new SimpleSchema2Bridge(formSchema);
