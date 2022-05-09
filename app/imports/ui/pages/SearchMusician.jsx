@@ -18,13 +18,36 @@ class FindMusician extends React.Component {
       load: true,
       genreFilter: 'Any',
       instrumentFilter: 'Any',
-      musiciansList: this.props.collectionData.musicians,
-      genreList: this.props.collectionData.musiciansGenres,
-      instrumentList: this.props.collectionData.musiciansInstruments,
+      musiciansList: [],
+      genreList: [],
+      instrumentList: [],
     };
   }
 
-  addOptions(collection) {
+  componentDidUpdate() {
+    if (this.state.load === true) {
+      setTimeout(() => {
+        this.setState({
+          load: false,
+          musiciansList: this.props.collectionData.musicians,
+          genreList: this.props.collectionData.musiciansGenres,
+          instrumentList: this.props.collectionData.musiciansInstruments,
+        });
+      }, 1000);
+    }
+  }
+
+  addGenreOptions(collection) {
+    const options = collection.map((option) => ({
+      key: option,
+      text: option,
+      value: option,
+    }));
+
+    return ([{ key: 'Any', text: 'Any', value: 'Any' }].concat(options));
+  }
+
+  addInstrumentOptions(collection) {
     const options = collection.map((option) => ({
       key: option.name,
       text: option.name,
@@ -53,7 +76,6 @@ class FindMusician extends React.Component {
         instrumentList: MusiciansInstruments.collection.find(value).fetch(),
       });
     }
-    this.setState({ load: false });
   }
 
   // Filters musicians based on preferences
@@ -62,12 +84,12 @@ class FindMusician extends React.Component {
     const filterWith = (option === 'genre') ?
       this.state.instrumentList.filter(instrument => collection.find(genre => genre.musician === instrument.musician)) :
       this.state.genreList.filter(genre => collection.find(instrument => instrument.musician === genre.musician));
-
+    // console.log(this.state.instrumentList);
     return this.props.collectionData.musicians.filter(musician => filterWith.find(item => musician.name === item.musician));
   }
 
   renderMusicians() {
-    const check = (this.state.load === true) ? this.props.collectionData.musicians : this.state.musiciansList;
+    const check = this.state.musiciansList;
     return check.map((musician, index) => <MusicianItem
       key={index}
       musician={musician}
@@ -83,8 +105,8 @@ class FindMusician extends React.Component {
 
   // Render the page once subscriptions have been received.
   renderPage() {
-    const genreOptions = this.addOptions(this.props.collectionData.genres);
-    const instrumentOptions = this.addOptions(this.props.collectionData.instruments);
+    const genreOptions = this.addGenreOptions(this.props.collectionData.genres[2].genres);
+    const instrumentOptions = this.addInstrumentOptions(this.props.collectionData.instruments);
 
     return (
       <Container id='searchPage'>
@@ -133,10 +155,10 @@ FindMusician.propTypes = {
 // withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
 export default withTracker(() => {
   // Get access to Stuff documents.
-  const subscriptions = Meteor.subscribe('Search');
+  const subscription = Meteor.subscribe('Search');
 
   // Determine if the subscriptions are ready
-  const ready = subscriptions.ready();
+  const ready = subscription.ready();
 
   // Get the documents
   const collectionData = {

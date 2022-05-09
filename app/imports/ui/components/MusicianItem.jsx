@@ -18,11 +18,11 @@ class MusicianItem extends React.Component {
         </Card.Content>
         <Card.Content extra>
           <Header as='h5'>Instruments:</Header>
-          {this.props.instruments.map((key) => <Button key={key} size='mini'>{key.instrument}</Button>)}
+          {this.props.instruments.map((key) => <Button key={key._id} size='mini'>{key.instrument}</Button>)}
         </Card.Content>
         <Card.Content extra>
           <Header as='h5'>Genres:</Header>
-          {this.props.genres.map((key) => <Button key={key} size='mini'>{key.genre}</Button>)}
+          {this.props.genres.map((key) => <Button key={key._id} size='mini'>{key.genre}</Button>)}
         </Card.Content>
       </Card>
     );
