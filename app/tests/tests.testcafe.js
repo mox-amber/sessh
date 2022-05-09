@@ -12,7 +12,7 @@ import { editPage } from './edit.page';
 /* global fixture:false, test:false */
 
 /** Credentials for one of the sample users defined in settings.development.json. */
-const credentials = { username: 'john@foo.com', password: 'changeme', name: 'John Foo', age: '20', image: 'https://i.pinimg.com/originals/e7/af/9e/e7af9e4eef3c9804d0496082bd7e3313.png' };
+const credentials = { username: 'john@foo.com', password: 'foo', name: 'John Foo', age: '20', image: 'https://i.pinimg.com/originals/e7/af/9e/e7af9e4eef3c9804d0496082bd7e3313.png', instrument: 'guitar', genre: 'rock and roll' };
 
 fixture('meteor-application-template-react localhost test with default db')
   .page('http://localhost:3000');
@@ -43,7 +43,7 @@ test('Test that search page works', async (testController) => {
   await searchPage.isDisplayed(testController);
 });
 
-test.only('Test that add musician page works', async (testController) => {
+test('Test that add musician page works', async (testController) => {
   await navBar.gotoSigninPage(testController);
   await signinPage.signin(testController, credentials.username, credentials.password);
   await navBar.gotoAddPage(testController);
@@ -57,4 +57,5 @@ test('Test that edit page works', async (testController) => {
   await navBar.isLoggedIn(testController, credentials.username);
   await navBar.gotoEditPage(testController);
   await editPage.isDisplayed(testController);
+  await editPage.edit(testController, credentials.name, credentials.age, credentials.instrument, credentials.genre);
 });

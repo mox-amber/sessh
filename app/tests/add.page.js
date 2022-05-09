@@ -14,7 +14,7 @@ class AddPage {
   }
 
   async add(testController, name, age, image) {
-    await this.isDisplayed(testController);
+    // await this.isDisplayed(testController);
     await testController.typeText('#add-name', name);
     await testController.typeText('#add-age', age);
     await testController.typeText('#add-image', image);
