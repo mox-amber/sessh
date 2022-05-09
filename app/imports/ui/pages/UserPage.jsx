@@ -43,28 +43,28 @@ class AccountPage extends React.Component {
         <Header id='Account-Title' as="h2" textAlign='center'>Your Account</Header>
         <Grid centered columns={2}>
           <Grid.Column floated='left'>
-            <Image src={this.props.musicians[this.getIndex(this.props.musicians, 'owner', this.props.apple[0].username)].image} size='large'/>
+            <Image src={this.props.musicians[this.getIndex(this.props.musicians, 'owner', Meteor.user().username)].image} size='large'/>
           </Grid.Column>
           <Grid.Column>
             <Container id='info'>
               <div id='bolder'>Name:</div>
-              <div>{this.props.musicians[this.getIndex(this.props.musicians, 'owner', this.props.apple[0].username)].name}</div>
+              <div>{this.props.musicians[this.getIndex(this.props.musicians, 'owner', Meteor.user().username)].name}</div>
             </Container>
             <Container id='info'>
               <div id='bolder'>Age:</div>
-              <div>{this.props.musicians[this.getIndex(this.props.musicians, 'owner', this.props.apple[0].username)].age}</div>
+              <div>{this.props.musicians[this.getIndex(this.props.musicians, 'owner', Meteor.user().username)].age}</div>
             </Container>
             <Container id='info'>
               <div id='bolder'>Genres:</div>
-              <div>{this.getInfo(this.props.musiciansGenres, 'genre', this.props.musicians[this.getIndex(this.props.musicians, 'owner', this.props.apple[0].username)].name)}</div>
+              <div>{this.getInfo(this.props.musiciansGenres, 'genre', this.props.musicians[this.getIndex(this.props.musicians, 'owner', Meteor.user().username)].name)}</div>
             </Container>
             <Container id='info'>
               <div id='bolder'>Instruments:</div>
-              <div>{this.getInfo(this.props.musiciansInstruments, 'instrument', this.props.musicians[this.getIndex(this.props.musicians, 'owner', this.props.apple[0].username)].name)}</div>
+              <div>{this.getInfo(this.props.musiciansInstruments, 'instrument', this.props.musicians[this.getIndex(this.props.musicians, 'owner', Meteor.user().username)].name)}</div>
             </Container>
             <Container id='info'>
               <div id='bolder'>Email:</div>
-              <div>{this.props.musicians[this.getIndex(this.props.musicians, 'owner', this.props.apple[0].username)].owner}</div>
+              <div>{this.props.musicians[this.getIndex(this.props.musicians, 'owner', Meteor.user().username)].owner}</div>
             </Container>
             <Menu id='edit-button' borderless compact size='large'>
               <Menu.Item as={NavLink} activeClassName="active" exact to="/edit-profile" key='edit-profile' id='footer'>edit</Menu.Item>
@@ -82,7 +82,6 @@ AccountPage.propTypes = {
   musiciansGenres: PropTypes.array.isRequired,
   musiciansInstruments: PropTypes.array.isRequired,
   ready: PropTypes.bool.isRequired,
-  apple: PropTypes.array.isRequired,
 };
 
 // withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
@@ -96,12 +95,10 @@ export default withTracker(() => {
   const musicians = Musicians.collection.find({}).fetch();
   const musiciansGenres = MusiciansGenres.collection.find({}).fetch();
   const musiciansInstruments = MusiciansInstruments.collection.find({}).fetch();
-  const apple = Meteor.users.find({}).fetch();
   return {
     musicians,
     musiciansGenres,
     musiciansInstruments,
     ready,
-    apple,
   };
 })(AccountPage);

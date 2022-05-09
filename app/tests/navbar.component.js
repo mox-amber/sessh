@@ -48,6 +48,12 @@ class NavBar {
   async gotoAddPage(testController) {
     await testController.click('#navbar-addPage');
   }
+
+  async gotoEditPage(testController) {
+    await testController.expect(Selector('#navbar-current-user').exists).ok();
+    await testController.click('#navbar-current-user');
+    await testController.click('#navbar-settings');
+  }
 }
 
 export const navBar = new NavBar();

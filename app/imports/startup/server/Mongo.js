@@ -3,7 +3,7 @@ import { Accounts } from 'meteor/accounts-base';
 import { Roles } from 'meteor/alanning:roles';
 import { Musicians } from '../../api/musician/Musician';
 import { Genres } from '../../api/genre/Genre';
-import { Instruments } from '../../api/instruments/Instruments';
+import { Instruments } from '../../api/instrument/Instrument';
 import { MusiciansInstruments } from '../../api/musician/MusicianInstrument';
 import { MusiciansGenres } from '../../api/musician/MusicianGenre';
 
