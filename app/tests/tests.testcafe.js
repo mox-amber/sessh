@@ -51,7 +51,7 @@ test('Test that add musician page works', async (testController) => {
   await addPage.add(testController, credentials.name, credentials.age, credentials.image);
 });
 
-test.only('Test that edit page works', async (testController) => {
+test('Test that edit page works', async (testController) => {
   await navBar.gotoSigninPage(testController);
   await signinPage.signin(testController, credentials.username, credentials.password);
   await navBar.isLoggedIn(testController, credentials.username);
