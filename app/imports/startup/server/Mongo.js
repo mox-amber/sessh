@@ -26,7 +26,7 @@ function addInstrument(instrument) {
 
 function addGenre(genre) {
   console.log(genre);
-  Genres.collection.update({ genres: genre }, { upsert: true });
+  Genres.collection.update({ genres: genre }, { $set: { genres: genre } }, { upsert: true });
 }
 
 /** Defines a new user and associated profile. Error if user already exists. */
@@ -39,7 +39,11 @@ function addMusician({ name, age, image, owner, role, instruments, genres }) {
   Musicians.collection.insert({ name, age, image, owner });
   // Add interests and projects.
   instruments.map(instrument => MusiciansInstruments.collection.insert({ musician: name, instrument }));
+  genres.map(genre => console.log(genre));
   genres.map(genre => MusiciansGenres.collection.insert({ musician: name, genre }));
+  // Make sure interests are defined in the Interests collection if they weren't already.
+  instruments.map(instrument => addInstrument(instrument));
+  genres.map(genre => addGenre(genre));
 }
 
 /** Initialize DB if it appears to be empty (i.e. no users defined.) */

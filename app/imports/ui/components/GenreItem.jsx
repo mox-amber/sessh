@@ -8,7 +8,7 @@ class GenreItem extends React.Component {
   render() {
     return (
       <Container>
-        <Header as="h2">{this.props.genre.name}</Header>
+        <Header as="h2">{this.props.genre}</Header>
       </Container>
     );
   }
