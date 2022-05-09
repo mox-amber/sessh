@@ -5,6 +5,7 @@ import { Container, Header, Loader } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import { Dms } from '../../api/dm/Dm';
+import { Musicians } from '../../api/musician/Musician';
 
 class ListMessages extends React.Component {
 
@@ -15,9 +16,12 @@ class ListMessages extends React.Component {
 
   // Render the page once subscriptions have been received.
   renderPage() {
+    const thisMusician = _.find(this.props.musicians, function (account) {
+      return account.owner === Meteor.user().username;
+    });
+    console.log(thisMusician);
     const array = _.filter(this.props.dms, function (account) {
-      console.log(Meteor.user());
-      return account.to === Meteor.user().username;
+      return account.to === thisMusician.name;
     });
     const messages = _.pluck(array, 'message');
     console.log(messages);
@@ -34,6 +38,7 @@ class ListMessages extends React.Component {
 // Require an array of Stuff documents in the props.
 ListMessages.propTypes = {
   dms: PropTypes.array.isRequired,
+  musicians: PropTypes.array.isRequired,
   ready: PropTypes.bool.isRequired,
 };
 
@@ -41,12 +46,15 @@ ListMessages.propTypes = {
 export default withTracker(() => {
   // Get access to Stuff documents.
   const subscription = Meteor.subscribe(Dms.userPublicationName);
+  const subscription2 = Meteor.subscribe(Musicians.userPublicationName);
   // Determine if the subscription is ready
-  const ready = subscription.ready();
+  const ready = subscription.ready() && subscription2.ready();
   // Get the Stuff documents
   const dms = Dms.collection.find({}).fetch();
+  const musicians = Musicians.collection.find({}).fetch();
   return {
     dms,
+    musicians,
     ready,
   };
 })(ListMessages);
