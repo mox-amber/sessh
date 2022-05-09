@@ -15,7 +15,11 @@ class EditProfilePage {
   /** Fills out and submits the form to signin, then checks to see that login was successful. */
   async edit(testController, name, age, instrument, genre) {
     // await this.isDisplayed(testController);
+    await testController.click('#name');
+    await testController.pressKey('ctrl+a delete');
     await testController.typeText('#name', name);
+    await testController.click('#age');
+    await testController.pressKey('ctrl+a delete');
     await testController.typeText('#age', age);
     await testController.typeText('#instrument', instrument);
     await testController.typeText('#genre', genre);
