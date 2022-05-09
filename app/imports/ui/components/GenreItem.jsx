@@ -17,7 +17,7 @@ class GenreItem extends React.Component {
 // Require a document to be passed to this component.
 GenreItem.propTypes = {
   genre: PropTypes.shape({
-    name: PropTypes.string,
+    // name: PropTypes.string,
     _id: PropTypes.string,
   }).isRequired,
 };
