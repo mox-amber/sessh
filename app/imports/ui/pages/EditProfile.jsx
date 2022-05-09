@@ -38,14 +38,14 @@ class EditProfile extends React.Component {
               <NumField id='age' name='age' decimal={false}/>
               <b>Instruments:</b>
               <br/>
-              <Input fluid placeholder='Instrument' />
+              <Input id='instrument' fluid placeholder='Instrument' />
               <br/>
               <b>Genres:</b>
               <br/>
-              <Input fluid placeholder='Genre' />
+              <Input id='genre' fluid placeholder='Genre' />
               <br/>
               <br/>
-              <SubmitField value='Submit'/>
+              <SubmitField id='edit-submit' value='Submit'/>
               <br/>
               <ErrorsField/>
               <HiddenField name='owner' />
