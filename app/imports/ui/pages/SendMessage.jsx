@@ -1,4 +1,5 @@
 import React from 'react';
+import { _ } from 'meteor/underscore';
 import { Grid, Segment, Header } from 'semantic-ui-react';
 import { AutoForm, ErrorsField, LongTextField, SubmitField, TextField } from 'uniforms-semantic';
 import swal from 'sweetalert';
@@ -6,6 +7,7 @@ import { Meteor } from 'meteor/meteor';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import SimpleSchema from 'simpl-schema';
 import { Dms } from '../../api/dm/Dm';
+import { Musicians } from '../../api/musician/Musician';
 
 // Create a schema to specify the structure of the data to appear in the form.
 const formSchema = new SimpleSchema({
@@ -21,7 +23,9 @@ class SendMessage extends React.Component {
   // On submit, insert the data.
   submit(data, formRef) {
     const { to, message } = data;
-    const from = Meteor.user().username;
+    const from = _.find(Musicians, function (account) {
+      return account.owner === Meteor.user().username;
+    });
     Dms.collection.insert({ to, from, message },
       (error) => {
         if (error) {

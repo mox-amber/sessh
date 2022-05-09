@@ -21,7 +21,7 @@ class MusicianItem extends React.Component {
           {this.props.instruments.map((key) => <Button key={key} size='mini'>{key.instrument}</Button>)}
         </Card.Content>
         <Card.Content extra>
-          <Header as='h5'>Instruments:</Header>
+          <Header as='h5'>Genres:</Header>
           {this.props.genres.map((key) => <Button key={key} size='mini'>{key.genre}</Button>)}
         </Card.Content>
       </Card>
