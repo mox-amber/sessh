@@ -98,6 +98,14 @@ Meteor.publish('Search', function () {
   return this.ready();
 });
 
+// testing if this helps messages
+Meteor.publish('EasyMessage', function () {
+  if (this.userID) {
+    return Musicians.collection.find();
+  }
+  return this.ready();
+});
+
 // alanning:roles publication
 // Recommended code to publish roles for each user.
 Meteor.publish(null, function () {
