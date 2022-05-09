@@ -6,7 +6,7 @@ import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import { Dms } from '../../api/dm/Dm';
 import { Musicians } from '../../api/musician/Musician';
-// import { Message } from '../components/Message';
+import { Message } from '../components/Message';
 
 class ListMessages extends React.Component {
 
@@ -33,8 +33,7 @@ class ListMessages extends React.Component {
     return (
       <Container>
         <Header as="h2" textAlign="center">Messages</Header>
-        <div>{messages}</div>
-
+        {this.props.dms.map((dm) => <Message key={dm._id} from={dm.from} message={dm.message} />)}
       </Container>
     );
   }

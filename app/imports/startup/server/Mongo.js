@@ -26,7 +26,7 @@ function addInstrument(instrument) {
 
 function addGenre(genre) {
   console.log(genre);
-  Genres.collection.update({ name: genre }, { $set: { name: genre } }, { upsert: true });
+  Genres.collection.update({ genres: genre }, { upsert: true });
 }
 
 /** Defines a new user and associated profile. Error if user already exists. */
@@ -40,9 +40,6 @@ function addMusician({ name, age, image, owner, role, instruments, genres }) {
   // Add interests and projects.
   instruments.map(instrument => MusiciansInstruments.collection.insert({ musician: name, instrument }));
   genres.map(genre => MusiciansGenres.collection.insert({ musician: name, genre }));
-  // Make sure interests are defined in the Interests collection if they weren't already.
-  instruments.map(instrument => addInstrument(instrument));
-  genres.map(genre => addGenre(genre));
 }
 
 /** Initialize DB if it appears to be empty (i.e. no users defined.) */
@@ -52,7 +49,7 @@ if (Meteor.users.find().count() === 0) {
     Meteor.settings.defaultMusicians.map(musician => addMusician(musician));
     console.log('Creating the default projects');
     Meteor.settings.defaultInstruments.map(instrument => addInstrument(instrument));
-    Meteor.settings.defaultGenres.map(genre => addGenre(genre));
+    addGenre(Meteor.settings.defaultGenres);
   } else {
     console.log('Cannot initialize the database!  Please invoke meteor with a settings file.');
   }
