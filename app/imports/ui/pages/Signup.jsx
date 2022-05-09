@@ -33,7 +33,7 @@ class Signup extends React.Component {
 
   /* Display the signup form. Redirect to add page after successful registration and login. */
   render() {
-    const { from } = this.props.location.state || { from: { pathname: '/add' } };
+    const { from } = this.props.location.state || { from: { pathname: '/add-musician' } };
     // if correct authentication, redirect to from: page instead of signup screen
     if (this.state.redirectToReferer) {
       return <Redirect to={from}/>;
@@ -65,26 +65,6 @@ class Signup extends React.Component {
                   name="password"
                   placeholder="Password"
                   type="password"
-                  onChange={this.handleChange}
-                />
-                <Form.Input
-                  label="Instruments"
-                  id="signup-form-instruments"
-                  icon="music"
-                  iconPosition="left"
-                  name="music"
-                  type="music"
-                  placeholder="Instruments"
-                  onChange={this.handleChange}
-                />
-                <Form.Input
-                  label="Genres"
-                  id="signup-form-genres"
-                  icon="headphones"
-                  iconPosition="left"
-                  name="genre"
-                  type="genre"
-                  placeholder="Genre"
                   onChange={this.handleChange}
                 />
                 <Form.Button id="signup-form-submit" content="Submit"/>

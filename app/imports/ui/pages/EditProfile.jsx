@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, Loader, Header, Segment, Input } from 'semantic-ui-react';
+import { Grid, Loader, Header, Segment } from 'semantic-ui-react';
 import swal from 'sweetalert';
 import { AutoForm, ErrorsField, HiddenField, NumField, SubmitField, TextField } from 'uniforms-semantic';
 import { Meteor } from 'meteor/meteor';
@@ -15,8 +15,8 @@ class EditProfile extends React.Component {
 
   // On successful submit, insert the data.
   submit(data) {
-    const { name, age, _id } = data;
-    Musicians.collection.update(_id, { $set: { name, age } }, (error) => (error ?
+    const { name, age, image, _id } = data;
+    Musicians.collection.update(_id, { $set: { name, age, image } }, (error) => (error ?
       swal('Error', error.message, 'error') :
       swal('Success', 'Item updated successfully', 'success')));
   }
@@ -30,22 +30,38 @@ class EditProfile extends React.Component {
   renderPage() {
     return (
       <Grid container centered>
-        <Grid.Column id="editPage">
+        <Grid.Column>
           <Header as="h2" textAlign="center">Edit Profile</Header>
           <AutoForm schema={bridge} onSubmit={data => this.submit(data)} model={this.props.doc}>
             <Segment>
-              <TextField id='name' name='name'/>
-              <NumField id='age' name='age' decimal={false}/>
-              <b>Instruments:</b>
+              <TextField name='name'/>
+              <NumField name='age' decimal={false}/>
+              <TextField name='image'/>
+              <label><strong>Instruments</strong></label>
+              <select name="instruments" multiple="" className="ui fluid dropdown">
+                <option value="">Instruments</option>
+                <option value="Guitar">Guitar</option>
+                <option value="Banjo">Banjo</option>
+                <option value="Viola">Viola</option>
+                <option value="Ukulele">Ukelele</option>
+                <option value="Mbira">Mbira</option>
+                <option value="Clarinet">Clarinet</option>
+                <option value="Cowbell">Cowbell</option>
+              </select>
               <br/>
-              <Input id='instrument' fluid placeholder='Instrument' />
+              <label><strong>Genres</strong></label>
+              <select name="genres" multiple="" className="ui fluid dropdown">
+                <option value="">Genres</option>
+                <option value="Pop">Pop</option>
+                <option value="RockAndRoll">Rock and Roll</option>
+                <option value="Hawaiian">Hawaiian</option>
+                <option value="Jazz">Jazz</option>
+                <option value="HipHop">Hip Hop</option>
+                <option value="GangsterRap">Gangster Rap</option>
+                <option value="Classical">Classical</option>
+              </select>
               <br/>
-              <b>Genres:</b>
-              <br/>
-              <Input id='genre' fluid placeholder='Genre' />
-              <br/>
-              <br/>
-              <SubmitField id='edit-submit' value='Submit'/>
+              <SubmitField value='Submit'/>
               <br/>
               <ErrorsField/>
               <HiddenField name='owner' />
