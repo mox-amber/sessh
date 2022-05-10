@@ -54,6 +54,14 @@ class NavBar {
     await testController.click('#navbar-current-user');
     await testController.click('#navbar-settings');
   }
+
+  async gotoSendMessagesPage(testController) {
+    await testController.click('#navbar-sendMessagePage');
+  }
+
+  async gotoMessagesPage(testController) {
+    await testController.click('#navbar-listMessagesPage');
+  }
 }
 
 export const navBar = new NavBar();

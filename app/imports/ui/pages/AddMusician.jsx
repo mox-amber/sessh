@@ -4,7 +4,7 @@ import { AutoForm, ErrorsField, NumField, SubmitField, TextField } from 'uniform
 import swal from 'sweetalert';
 import { Meteor } from 'meteor/meteor';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
-import MultiSelectField from '../forms/controllers/MultiSelectField';
+// import MultiSelectField from '../forms/controllers/MultiSelectField';
 import { MusicianFormSchema as formSchema } from '../forms/AddMusicianInfo';
 import { Musicians } from '../../api/musician/Musician';
 /* import { MusiciansGenres } from '../../api/musician/MusicianGenre';
@@ -47,16 +47,16 @@ class AddMusician extends React.Component {
     let fRef = null;
     return (
       <Grid container centered>
-        <Grid.Column id='addPage'>
+        <Grid.Column id='add-page'>
           <Header as="h2" textAlign="center">Add Musician</Header>
           <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => this.submit(data, fRef)} >
             <Segment>
-              <TextField name='name'/>
-              <NumField name='age' decimal={false}/>
-              <TextField name='image'/>
-              <TextField name='instruments'/>
-              <MultiSelectField name='genres' showInlineError={true} placeholder={'Select genres (optional)'}/>
-              <SubmitField value='Submit'/>
+              <TextField id='add-name' name='name'/>
+              <NumField id='add-age' name='age' decimal={false}/>
+              <TextField id='add-image' name='image'/>
+              <TextField id='add-instrument' name='instruments'/>
+              <TextField id='add-genre' name='genres' showInlineError={true} placeholder={'Select genres (optional)'}/>
+              <SubmitField id='add-submit' value='Submit'/>
               <ErrorsField/>
             </Segment>
           </AutoForm>

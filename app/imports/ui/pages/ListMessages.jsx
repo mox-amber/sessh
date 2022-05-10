@@ -31,7 +31,7 @@ class ListMessages extends React.Component {
     console.log(messages);
 
     return (
-      <Container>
+      <Container id='message-page'>
         <Header as="h2" textAlign="center">Messages</Header>
         <div>{this.props.dms.map((dm) => <Message key={dm._id} dm={dm} />)}</div>
       </Container>
