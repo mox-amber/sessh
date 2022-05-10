@@ -101,7 +101,7 @@ class EditProfile extends React.Component {
               <br/>
               <br/>
               <HiddenField name='owner' />
-              <SubmitField value='Submit'/>
+              <SubmitField id='edit-submit' value='Submit'/>
               <ErrorsField/>
             </Segment>
 
