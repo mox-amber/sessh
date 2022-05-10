@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, Loader, Header, Segment, Image, Button, FormGroup } from 'semantic-ui-react';
+import { Grid, Loader, Header, Segment, Image } from 'semantic-ui-react';
 import swal from 'sweetalert';
 import { AutoForm, ErrorsField, HiddenField, NumField, SubmitField, TextField } from 'uniforms-semantic';
 import { Meteor } from 'meteor/meteor';
@@ -10,6 +10,8 @@ import SimpleSchema from 'simpl-schema';
 import { Musicians } from '../../api/musician/Musician';
 import { MusiciansGenres } from '../../api/musician/MusicianGenre';
 import { MusiciansInstruments } from '../../api/musician/MusicianInstrument';
+import { allGenres, allInstruments } from '../forms/AddMusicianInfo';
+import MultiSelectField from '../forms/controllers/MultiSelectField';
 
 /** Renders the Page for editing a single document. */
 class EditProfile extends React.Component {
@@ -20,21 +22,23 @@ class EditProfile extends React.Component {
     image: String,
     owner: String,
     musician: String,
-    instrument: { type: String, optional: true },
-    genre: { type: String, optional: true },
+    instruments: { label: 'Instruments', type: Array, optional: true },
+    'instruments.$': { type: String, allowedValues: allInstruments },
+    genres: { label: 'Genres', type: Array, optional: true },
+    'genres.$': { type: String, allowedValues: allGenres },
   });
 
   // On successful submit, insert the data.
   submit(data) {
-    const { name, age, image, instrument, genre, _id } = data;
+    const { name, age, image, instruments, genres, _id } = data;
     Musicians.collection.update(_id, { $set: { name, age, image } }, (error) => (error ?
       swal('Error', error.message, 'error') :
       swal('Success', 'Item updated successfully', 'success')));
-    if (instrument) {
-      MusiciansInstruments.collection.insert({ musician: name, instrument: instrument });
+    if (instruments) {
+      MusiciansInstruments.collection.insert({ musician: name, instruments: instruments });
     }
-    if (genre) {
-      MusiciansGenres.collection.insert({ musician: name, genre: genre });
+    if (genres) {
+      MusiciansGenres.collection.insert({ musician: name, genres: genres });
     }
   }
 
@@ -62,40 +66,8 @@ class EditProfile extends React.Component {
               <TextField id='image' name='image'/>
               <TextField id='name' name='name'/>
               <NumField id='age' name='age' decimal={false}/>
-              <h4>Instruments: </h4>
-              <FormGroup>
-                {this.props.docs.musiciansInstruments.map(
-                  (instrument) => (instrument.musician === this.props.docs.musician.name ?
-                    <Button key={instrument._id}>
-                      {instrument.instrument}
-                    </Button> : ''),
-                )}
-                <TextField
-                  width={4}
-                  id='instrument'
-                  name='instrument'
-                  label=''
-                  placeholder='Add Instrument'
-                />
-              </FormGroup>
-
-              <h4>Genres: </h4>
-              <FormGroup>
-                {this.props.docs.musiciansGenres.map(
-                  (genre) => (genre.musician === this.props.docs.musician.name ?
-                    <Button key={genre._id}>
-                      {genre.genre}
-                    </Button> : ''),
-                )}
-                <TextField
-                  width={4}
-                  id='genre'
-                  name='genre'
-                  label=''
-                  placeholder='Add Genre'
-                />
-              </FormGroup>
-
+              <MultiSelectField name='instruments' showInlineError={true} placeholder={'Select instruments'}/>
+              <MultiSelectField name='genres' showInlineError={true} placeholder={'Select genres'}/>
               <HiddenField id='musician' name='musician' value={this.props.docs.musician.name}/>
 
               <br/>

@@ -2,6 +2,10 @@ import { Mongo } from 'meteor/mongo';
 import SimpleSchema from 'simpl-schema';
 import { Tracker } from 'meteor/tracker';
 
+const allInstruments = {
+  genres: ['Guitar', 'Piano', 'Violin', 'Drums', 'Saxophone', 'Cello', 'Flute', 'Clarinet', 'Trumpet', 'Banjo', 'Ukulele', 'Mbira', 'Cowbell', 'Triangle', 'Other'],
+};
+
 /**
  * The MusiciansGenre. Associates genre with musician.
  */
@@ -14,7 +18,8 @@ class MusicianInstrumentCollection {
     // Define the structure of each document in the collection.
     this.schema = new SimpleSchema({
       musician: String,
-      instrument: String,
+      instruments: { type: Array, optional: true },
+      'instruments.$': { type: String, allowedValues: allInstruments },
     }, { tracker: Tracker });
     // Attach the schema to the collection, so all attempts to insert a document are checked against schema.
     this.collection.attachSchema(this.schema);
