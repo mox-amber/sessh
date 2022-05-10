@@ -20,9 +20,9 @@ class AddMusician extends React.Component {
   // On submit, insert the data.
   submit(data, formRef) {
     let insertError;
-    const { name, age, image /* genres */ } = data; /* add instruments later */
+    const { name, age, image, instruments, genre } = data; /* add instruments later */
     const owner = Meteor.user().username;
-    Musicians.collection.insert({ name, age, image, owner },
+    Musicians.collection.insert({ name, age, image, instruments, genre, owner },
       (error) => { insertError = error; });
     if (insertError) {
       swal('Error', insertError.message, 'error');
