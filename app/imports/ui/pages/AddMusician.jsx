@@ -53,7 +53,7 @@ class AddMusician extends React.Component {
             <Segment>
               <TextField id='add-name' name='name'/>
               <NumField id='add-age' name='age' decimal={false}/>
-              <TextField id='add-image' name='image'/>
+              <TextField id='add-image' name='image' placeholder={'Input image URL here'}/>
               <TextField id='add-instrument' name='instruments'/>
               <TextField id='add-genre' name='genres' showInlineError={true} placeholder={'Select genres (optional)'}/>
               <SubmitField id='add-submit' value='Submit'/>
