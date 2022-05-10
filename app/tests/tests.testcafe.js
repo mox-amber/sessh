@@ -17,6 +17,8 @@ import { signupPage } from './signup.page';
 /** Credentials for one of the sample users defined in settings.development.json. */
 const credentials = { username: 'john@doe.com', password: 'foo', name: 'John Doe', age: '20', image: 'https://i.pinimg.com/originals/e7/af/9e/e7af9e4eef3c9804d0496082bd7e3313.png', instrument: 'Guitar', genre: 'Pop' };
 
+const loginCredentials = { username: 'john@foo.com', password: 'foo', name: 'John Foo', age: '20', image: 'https://i.pinimg.com/originals/e7/af/9e/e7af9e4eef3c9804d0496082bd7e3313.png', instrument: 'Guitar', genre: 'Pop' };
+
 const dm = { to: 'john@doe.com', from: 'john@doe.com', message: 'test test test' };
 
 fixture('meteor-application-template-react localhost test with default db')
@@ -29,10 +31,20 @@ test('Test that landing page shows up', async (testController) => {
   pageRequestTimeout: 60000,
 });
 
+test('Test that sign up musician page works', async (testController) => {
+  await navBar.gotoSignupPage(testController);
+  await signupPage.signupUser(testController, credentials.username, credentials.password);
+  await addPage.isDisplayed(testController);
+  await addPage.add(testController, credentials.name, credentials.age, credentials.image, credentials.instrument, credentials.genre);
+}).timeouts({
+  pageLoadTimeout: 3000,
+  pageRequestTimeout: 60000,
+});
+
 test('Test that signin and signout work', async (testController) => {
   await navBar.gotoSigninPage(testController);
-  await signinPage.signin(testController, credentials.username, credentials.password);
-  await navBar.isLoggedIn(testController, credentials.username);
+  await signinPage.signin(testController, loginCredentials.username, loginCredentials.password);
+  await navBar.isLoggedIn(testController, loginCredentials.username);
   await navBar.logout(testController);
   await signoutPage.isDisplayed(testController);
 }).timeouts({
@@ -55,16 +67,6 @@ test('Test that search page works', async (testController) => {
   await signinPage.signin(testController, credentials.username, credentials.password);
   await navBar.gotoSearchPage(testController);
   await searchPage.isDisplayed(testController);
-}).timeouts({
-  pageLoadTimeout: 3000,
-  pageRequestTimeout: 60000,
-});
-
-test('Test that sign up musician page works', async (testController) => {
-  await navBar.gotoSignupPage(testController);
-  await signupPage.signupUser(testController, credentials.username, credentials.password);
-  await addPage.isDisplayed(testController);
-  await addPage.add(testController, credentials.name, credentials.age, credentials.image, credentials.instrument, credentials.genre);
 }).timeouts({
   pageLoadTimeout: 3000,
   pageRequestTimeout: 60000,
