@@ -4,13 +4,10 @@ import { AutoForm, ErrorsField, NumField, SubmitField, TextField } from 'uniform
 import swal from 'sweetalert';
 import { Meteor } from 'meteor/meteor';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
-// import MultiSelectField from '../forms/controllers/MultiSelectField';
 import { MusicianFormSchema as formSchema } from '../forms/AddMusicianInfo';
 import { Musicians } from '../../api/musician/Musician';
-/* import { MusiciansGenres } from '../../api/musician/MusicianGenre';
-import { Genres } from '../../api/genre/Genre';
-import { Instruments } from '../../api/instruments/Instruments';
-*/
+import { MusiciansGenres } from '../../api/musician/MusicianGenre';
+import { MusiciansInstruments } from '../../api/musician/MusicianInstrument';
 
 const bridge = new SimpleSchema2Bridge(formSchema);
 
@@ -20,23 +17,16 @@ class AddMusician extends React.Component {
   // On submit, insert the data.
   submit(data, formRef) {
     let insertError;
-    const { name, age, image, instruments, genre } = data; /* add instruments later */
+    const { name, age, image, instruments, genres } = data; /* add instruments later */
     const owner = Meteor.user().username;
-    Musicians.collection.insert({ name, age, image, instruments, genre, owner },
-      (error) => { insertError = error; });
+    Musicians.collection.insert({ name, age, image, owner }, (error) => { insertError = error; });
+    console.log(genres);
+    MusiciansGenres.collection.insert({ musician: name, genre: genres });
+    console.log(instruments);
+    MusiciansInstruments.collection.insert({ musician: name, instrument: instruments });
     if (insertError) {
       swal('Error', insertError.message, 'error');
     } else {
-      /* Genres.collection.insert({ name, genres },
-        (error) => { insertError = error; });
-      if (insertError) {
-        swal('Error', insertError.message, 'error');
-        console.log('NOT WORKING');
-      } else {
-        console.log('WORKING');
-        swal('Success', 'The musician profile was created.', 'success');
-        formRef.reset();
-      } */
       swal('Success', 'The musician profile was created.', 'success');
       formRef.reset();
     }
@@ -55,7 +45,7 @@ class AddMusician extends React.Component {
               <NumField id='add-age' name='age' decimal={false}/>
               <TextField id='add-image' name='image' placeholder={'Input image URL here'}/>
               <TextField id='add-instrument' name='instruments'/>
-              <TextField id='add-genre' name='genres' showInlineError={true} placeholder={'Select genres (optional)'}/>
+              <TextField id='add-genre' name='genres' />
               <SubmitField id='add-submit' value='Submit'/>
               <ErrorsField/>
             </Segment>
