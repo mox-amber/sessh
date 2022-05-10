@@ -45,10 +45,6 @@ class NavBar {
     await testController.click('#navbar-searchPage');
   }
 
-  async gotoAddPage(testController) {
-    await testController.click('#navbar-addPage');
-  }
-
   async gotoEditPage(testController) {
     await testController.expect(Selector('#navbar-current-user').exists).ok();
     await testController.click('#navbar-current-user');

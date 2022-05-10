@@ -10,13 +10,14 @@ import { addPage } from './add.page';
 import { editPage } from './edit.page';
 import { messagePage } from './messages.page';
 import { sendPage } from './send.page';
+import { signupPage } from './signup.page';
 
 /* global fixture:false, test:false */
 
 /** Credentials for one of the sample users defined in settings.development.json. */
-const credentials = { username: 'john@foo.com', password: 'foo', name: 'John Foo', age: '20', image: 'https://i.pinimg.com/originals/e7/af/9e/e7af9e4eef3c9804d0496082bd7e3313.png', instrument: 'Guitar', genre: 'Pop' };
+const credentials = { username: 'john@doe.com', password: 'foo', name: 'John Doe', age: '20', image: 'https://i.pinimg.com/originals/e7/af/9e/e7af9e4eef3c9804d0496082bd7e3313.png', instrument: 'Guitar', genre: 'Pop' };
 
-const dm = { to: 'john@foo.com', from: 'john@foo.com', message: 'test test test' };
+const dm = { to: 'john@doe.com', from: 'john@doe.com', message: 'test test test' };
 
 fixture('meteor-application-template-react localhost test with default db')
   .page('http://localhost:3000');
@@ -59,10 +60,9 @@ test('Test that search page works', async (testController) => {
   pageRequestTimeout: 60000,
 });
 
-test('Test that add musician page works', async (testController) => {
-  await navBar.gotoSigninPage(testController);
-  await signinPage.signin(testController, credentials.username, credentials.password);
-  await navBar.gotoAddPage(testController);
+test('Test that sign up musician page works', async (testController) => {
+  await navBar.gotoSignupPage(testController);
+  await signupPage.signupUser(testController, credentials.username, credentials.password);
   await addPage.isDisplayed(testController);
   await addPage.add(testController, credentials.name, credentials.age, credentials.image, credentials.instrument, credentials.genre);
 }).timeouts({
