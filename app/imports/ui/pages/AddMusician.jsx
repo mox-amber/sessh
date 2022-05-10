@@ -53,9 +53,9 @@ class AddMusician extends React.Component {
             <Segment>
               <TextField name='name'/>
               <NumField name='age' decimal={false}/>
-              <TextField name='image'/>
-              <TextField name='instruments'/>
-              <MultiSelectField name='genres' showInlineError={true} placeholder={'Select genres (optional)'}/>
+              <TextField name='image' placeholder={'fakeImage.jpg'}/>
+              <MultiSelectField name='instruments' showInlineError={true} placeholder={'Select instruments'}/>
+              <MultiSelectField name='genres' showInlineError={true} placeholder={'Select genres'}/>
               <SubmitField value='Submit'/>
               <ErrorsField/>
             </Segment>
