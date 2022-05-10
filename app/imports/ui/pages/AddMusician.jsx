@@ -7,7 +7,6 @@ import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 // import MultiSelectField from '../forms/controllers/MultiSelectField';
 import { MusicianFormSchema as formSchema } from '../forms/AddMusicianInfo';
 import { Musicians } from '../../api/musician/Musician';
-import MultiSelectField from '../forms/controllers/MultiSelectField';
 /* import { MusiciansGenres } from '../../api/musician/MusicianGenre';
 import { Genres } from '../../api/genre/Genre';
 import { Instruments } from '../../api/instruments/Instruments';
@@ -55,11 +54,7 @@ class AddMusician extends React.Component {
               <TextField id='add-name' name='name'/>
               <NumField id='add-age' name='age' decimal={false}/>
               <TextField id='add-image' name='image'/>
-              {/* eslint-disable-next-line react/jsx-no-comment-textnodes */}
               <TextField id='add-instrument' name='instruments'/>
-              /*
-              <MultiSelectField id='add-genre' name='genres' showInlineError={true} placeholder={'Select genres (optional)'}/>
-              */
               <TextField id='add-genre' name='genres' showInlineError={true} placeholder={'Select genres (optional)'}/>
               <SubmitField id='add-submit' value='Submit'/>
               <ErrorsField/>
