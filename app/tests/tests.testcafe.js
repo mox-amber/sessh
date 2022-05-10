@@ -23,6 +23,9 @@ fixture('meteor-application-template-react localhost test with default db')
 
 test('Test that landing page shows up', async (testController) => {
   await landingPage.isDisplayed(testController);
+}).timeouts({
+  pageLoadTimeout: 3000,
+  pageRequestTimeout: 60000,
 });
 
 test('Test that signin and signout work', async (testController) => {
@@ -31,6 +34,9 @@ test('Test that signin and signout work', async (testController) => {
   await navBar.isLoggedIn(testController, credentials.username);
   await navBar.logout(testController);
   await signoutPage.isDisplayed(testController);
+}).timeouts({
+  pageLoadTimeout: 3000,
+  pageRequestTimeout: 60000,
 });
 
 test('Test that user dashboard works', async (testController) => {
@@ -38,6 +44,9 @@ test('Test that user dashboard works', async (testController) => {
   await signinPage.signin(testController, credentials.username, credentials.password);
   await navBar.gotoUserDashboardPage(testController);
   await userPage.isDisplayed(testController);
+}).timeouts({
+  pageLoadTimeout: 3000,
+  pageRequestTimeout: 60000,
 });
 
 test('Test that search page works', async (testController) => {
@@ -45,6 +54,9 @@ test('Test that search page works', async (testController) => {
   await signinPage.signin(testController, credentials.username, credentials.password);
   await navBar.gotoSearchPage(testController);
   await searchPage.isDisplayed(testController);
+}).timeouts({
+  pageLoadTimeout: 3000,
+  pageRequestTimeout: 60000,
 });
 
 test('Test that add musician page works', async (testController) => {
@@ -53,6 +65,9 @@ test('Test that add musician page works', async (testController) => {
   await navBar.gotoAddPage(testController);
   await addPage.isDisplayed(testController);
   await addPage.add(testController, credentials.name, credentials.age, credentials.image, credentials.instrument, credentials.genre);
+}).timeouts({
+  pageLoadTimeout: 3000,
+  pageRequestTimeout: 60000,
 });
 
 test('Test that edit page works', async (testController) => {
@@ -62,6 +77,9 @@ test('Test that edit page works', async (testController) => {
   await navBar.gotoEditPage(testController);
   await editPage.isDisplayed(testController);
   await editPage.edit(testController, credentials.name, credentials.age, credentials.instrument, credentials.genre);
+}).timeouts({
+  pageLoadTimeout: 3000,
+  pageRequestTimeout: 60000,
 });
 
 test('Test that send messages pages works', async (testController) => {
@@ -72,4 +90,7 @@ test('Test that send messages pages works', async (testController) => {
   await sendPage.send(testController, dm.to, dm.from, dm.message);
   await navBar.gotoMessagesPage(testController);
   await messagePage.isDisplayed(testController);
+}).timeouts({
+  pageLoadTimeout: 3000,
+  pageRequestTimeout: 60000,
 });
